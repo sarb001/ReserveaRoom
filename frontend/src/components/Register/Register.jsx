@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import  { NavLink } from 'react-router-dom' ;
+
 
 const Register = () => {
-
-
-
 
   return (
     <div className='bg-blue-400 m-8'>
@@ -47,8 +46,8 @@ const Register = () => {
                 </div>
 
                 <div>
-                  <span className='text-[18px]'> Already have an account?
-                    <a href = "/login"> Login Here </a>  
+                  <span className='text-[18px]'>  
+                    <NavLink  to = "/login" > Already have an account? Login Here </NavLink>
                   </span>
                 </div>
 
