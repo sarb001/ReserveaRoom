@@ -5,21 +5,24 @@ import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Translation from './components/Translation/Translation';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
   return (
-      <>
+      <div className='anta-regular'>
+         <Navbar />
+            <Routes>
+              <Route path='/' element = {<Home />}>  </Route>
+              <Route path='/register' element = {<Register />}>  </Route>
+              <Route path='/login' element = {<Login />}>  </Route>
+              <Route path='/translation' element = {<Translation />}>  </Route>
+            </Routes>
+          <Footer />
 
-      <Routes>
-         <Route path='/' element = {<Home />}>  </Route>
-         <Route path='/register' element = {<Register />}>  </Route>
-         <Route path='/login' element = {<Login />}>  </Route>
-         <Route path='/translation' element = {<Translation />}>  </Route>
-      </Routes>
 
-
-       <div className='bg-lime-300'>
+       {/* <div className='bg-lime-300'>
           <div> Navbar  </div>
           <div>
             <span> ReserveaRoom.com </span>
@@ -67,8 +70,8 @@ function App() {
          <div>
            <span> Footer  </span>
          </div>
-       </div>
-      </>
+       </div> */}
+      </div>
   )
 }
 
