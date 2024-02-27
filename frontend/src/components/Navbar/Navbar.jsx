@@ -4,6 +4,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaMoon } from "react-icons/fa6";
 import { IoSunny } from "react-icons/io5";
 
+import { NavLink } from 'react-router-dom' ;
+
 const Navbar = () => {
     const [showbar,setshowbar] = useState(false);
     const [darkmode,setdarkmode] = useState(false);
@@ -37,8 +39,18 @@ const Navbar = () => {
                  </li>
                  <li  className='py-2'> <FaGlobe /> </li>
                  <li  className='pt-2  md:pt-2 lg:font-medium'> List your Property </li>
-                 <li  className='py-2'> <button className='bg-slate-100 text-blue-600 p-1'> Register </button> </li>
-                 <li  className='py-2'> <button className='bg-slate-100 text-blue-600 p-1'> Login </button> </li>
+
+                 <li  className='py-2'> 
+                  <button className='bg-slate-100 text-blue-600 p-1'> 
+                    <NavLink to='/register'> Register </NavLink>
+                  </button> 
+                 </li>
+
+                 <li  className='py-2'> 
+                  <button className='bg-slate-100 text-blue-600 p-1'> 
+                      <NavLink to='/login'> Login </NavLink>
+                    </button>
+                 </li>
                </ul>
               </div>
             }
