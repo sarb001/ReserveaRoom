@@ -19,7 +19,7 @@ function App() {
               <Route path='/login' element = {<Login />}>  </Route>
               <Route path='/translation' element = {<Translation />}>  </Route>
             </Routes>
-          <Footer />
+          {/* <Footer /> */}
 
 
        {/* <div className='bg-lime-300'>
