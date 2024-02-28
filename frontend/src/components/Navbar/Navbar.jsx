@@ -38,7 +38,9 @@ const Navbar = () => {
                     { darkmode ? <IoSunny /> : <FaMoon /> }    
                  </li>
                  <li  className='py-2'> <FaGlobe /> </li>
-                 <li  className='pt-2  md:pt-2 lg:font-medium'> List your Property </li>
+                 <li  className='pt-2  md:pt-2 lg:font-medium'> 
+                   <NavLink to = "/listing">  List your Property  </NavLink>     
+                 </li>
 
                  <li  className='py-2'> 
                   <button className='bg-slate-100 text-blue-600 p-1'> 

@@ -11,9 +11,17 @@ const Home = () => {
      ]
 
   return (
-    <div className='m-4'>
+    <div className='m-4 xl:m-8'>
        <div className='text-5xl py-2'> Find your next stay  </div>
-       <div className='text-2xl py-2'> Search low prices on hotels, homes and much more.... </div>
+       <div className='text-xl py-2'> Search low prices on hotels, homes and much more.... </div>
+
+          {/*  Calendar Here   */}
+        {/* <div></div> */}
+
+          <div className='mt-16'>
+            <div className='text-3xl'>  Trending destinations </div>  
+            <div className='text-xl'> Most popular choices for travellers from India </div>  
+          </div>
 
       <div className='flex flex-row justify-center flex-wrap gap-5 my-12'>
         {Destinations.map(main => 

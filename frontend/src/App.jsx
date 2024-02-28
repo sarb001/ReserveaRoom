@@ -7,6 +7,7 @@ import Register from './components/Register/Register';
 import Translation from './components/Translation/Translation';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import PropertyListing from './components/PropertyListing/PropertyListing';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
               <Route path='/register' element = {<Register />}>  </Route>
               <Route path='/login' element = {<Login />}>  </Route>
               <Route path='/translation' element = {<Translation />}>  </Route>
+              <Route path='/listing' element = {<PropertyListing />}>  </Route>
             </Routes>
           {/* <Footer /> */}
 
