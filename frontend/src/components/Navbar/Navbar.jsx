@@ -25,7 +25,7 @@ const Navbar = () => {
 
       <div className='mx-4 flex flex-row justify-between p-4 h-16'>
             <div className='text-2xl'> 
-               <span> ReserveaRoom.com  </span>
+               <NavLink to = "/">  ReserveaRoom.com   </NavLink>
             </div>
 
             {!showbar && 
