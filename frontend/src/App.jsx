@@ -8,6 +8,7 @@ import Translation from './components/Translation/Translation';
 import Navbar from './components/Navbar/Navbar';
 import PropertyListing from './components/PropertyListing/PropertyListing';
 import FilterSection from './components/FilterSection/FilterSection';
+import SpecificCardDetails from './components/FilterSection/SpecificCardDetails';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
               <Route path='/translation' element = {<Translation />}>  </Route>
               <Route path='/listing' element = {<PropertyListing />}>  </Route>
               <Route path='/filter' element = {<FilterSection />}>  </Route>
+              <Route path='/card/:id' element = {<SpecificCardDetails />}>  </Route>
             </Routes>
           {/* <Footer /> */}
 

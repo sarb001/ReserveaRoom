@@ -3,7 +3,6 @@ import React from 'react'
 const ApplyFilter = () => {
   return (
     <div>
-
                 <div>
                     <span className='text-3xl'> Filter By: </span>
                 </div>
