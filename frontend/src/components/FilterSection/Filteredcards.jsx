@@ -1,7 +1,9 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom'
+
 
 const Filteredcards = () => {
+
 
   const Destinations = [
     { id :1, Place : 'New Delhi' ,  img : '/public/NewDelhi.jpg'  , Hotelname :'Hilton New Delhi Embassy' , Distance : '5k from centre'  , BedType : 'Twin Bed' , Rating: 8.5 , Reservation : ' Free Cancellation'  , adults : 2 , nights : 4 },
@@ -17,6 +19,7 @@ const Filteredcards = () => {
         {Destinations.map(main => 
             <div className='grid justify-center text-center'  key = {main.id}>
                 <div className='bg-slate-600 p-2 grid grid-cols-[0.5fr,2fr]'>
+
                       <div className='w-[250px] h-[250px] text-center'>
                             <img  className='w-full h-full object-cover overflow-hidden rounded-2xl' src = {main.img} alt = "Holiday" />
                       </div>
@@ -29,7 +32,9 @@ const Filteredcards = () => {
                         <div> {main.Rating} </div>
                         <div> {main.Reservation} </div>
                         <div> Adults - {main.adults} Nights -{main.nights}  </div>
-                        <button className='bg-black text-white p-2'>  <NavLink to = "/card:/id"> Check Availability  </NavLink> </button>
+                        <button className='bg-black text-white p-2'>  
+                          <Link to = {`/card/${main.id}`}>  Check Availability   </Link>
+                         </button>
                       </div>
                 </div>
             </div>  
