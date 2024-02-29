@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from 'bcrypt' ;
 
 const UserSchema = new  mongoose.Schema({
     name :{
@@ -20,6 +21,14 @@ const UserSchema = new  mongoose.Schema({
         minLength : [6 , "Password must be atleast 6 characters"],
         select :false
     }
+})
+
+
+UserSchema.pre('save' , async function(next) {
+    if(this.isModified("password")){
+        this.password = await bcrypt.hash(this.password,10)
+    }
+    next();
 })
 
 const User = mongoose.model('User',UserSchema);

@@ -27,6 +27,25 @@ export const RegisterUser = async(req,res) => {
      })
 }
 
-export const LoginUser = (req,res) => {
+export const LoginUser = async(req,res) => {
+    const { email , password } = req.body;
+    if(!email || !password){
+        return res.status(400).json({
+             message: "Fill Empty Fields"
+        })
+    }
+
+    const  findUser = await User.find({email});
+    if(!findUser){
+        return res.status(400).json({
+            message :  " User not Found ",
+            findUser
+        })
+    }
+
+    // from email get pass 
+    // if correct fetch details
+    // store in localstorage 
+    // return logged user 
 
 }
