@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom' ;
 
 
 const Filteredcards = () => {
-
 
   const Destinations = [
     { id :1, Place : 'New Delhi' ,  img : '/public/NewDelhi.jpg'  , Hotelname :'Hilton New Delhi Embassy' , Distance : '5k from centre'  , BedType : 'Twin Bed' , Rating: 8.5 , Reservation : ' Free Cancellation'  , adults : 2 , nights : 4 },
@@ -31,7 +30,7 @@ const Filteredcards = () => {
                         <div> {main.BedType} </div>
                         <div> {main.Rating} </div>
                         <div> {main.Reservation} </div>
-                        <div> Adults - {main.adults} Nights -{main.nights}  </div>
+                        <div> Adults - {main.adults} Nights - {main.nights}  </div>
                         <button className='bg-black text-white p-2'>  
                           <Link to = {`/card/${main.id}`}>  Check Availability   </Link>
                          </button>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -28,9 +29,11 @@ const Home = () => {
             <div className='grid justify-center text-center'  key = {main.Place}>
                 <div className='bg-slate-600 p-2 grid grid-rows-[0.5fr,2fr]'>
                       <div className='text-4xl'>  {main.Place} </div>
-                      <div className='w-[350px] h-[250px] text-center'>
-                            <img  className='w-full h-full object-cover overflow-hidden rounded-2xl' src = {main.img} alt = "Holiday" />
-                      </div>
+                       <Link to = '/filter'>
+                        <div className='w-[350px] h-[250px] text-center'>
+                              <img  className='w-full h-full object-cover overflow-hidden rounded-2xl' src = {main.img} alt = "Holiday" />
+                        </div>
+                       </Link>
                       
                 </div>
             </div>  
