@@ -13,7 +13,7 @@ import SpecificCardDetails from './components/FilterSection/SpecificCardDetails'
 
 function App() {
   return (
-      <div className='anta-regular'>
+      <div className='mainapp'>
          <Navbar />
             <Routes>
               <Route path='/' element = {<Home />}>  </Route>

@@ -34,7 +34,6 @@ const Home = () => {
                               <img  className='w-full h-full object-cover overflow-hidden rounded-2xl' src = {main.img} alt = "Holiday" />
                         </div>
                        </Link>
-                      
                 </div>
             </div>  
         )}
