@@ -51,7 +51,11 @@ export const LoginUser = async(req,res) => {
             message: " Password  not Matched "
         })
     }
-    const token = '123';
+
+    const token = await findUser.generateToken(findUser._id);
+    console.log('token is -',token);
+
+    // const token = '123';
     res.cookie('token' , token , {
         maxAge : new Date(Date.now() + 900000),
         path : '/',
