@@ -75,3 +75,14 @@ export const Logout = async(req,res) => {
             message : "Logged Out"
         })
 }
+
+
+export const AccessUser = async(req,res) => {
+    try {
+        console.log('inside User Data 1 ');
+        console.log('inside User Data 2 ');
+        res.send(' Auth Working ')
+    } catch (error) {
+        
+    }
+}
