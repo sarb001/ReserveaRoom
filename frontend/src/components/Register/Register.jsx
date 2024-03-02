@@ -12,11 +12,12 @@ const Register = () => {
    const dispatch = useDispatch();
 
    const HandleRegistration = () => {
-       if(!fname || !email ||!password){
-         return  res.status(400).json({
-           message : "Fill All Fields",
-         })
-       }
+    console.log('reachedd');
+      //  if(!fname || !email ||!password){
+      //    return  res.status(400).json({
+      //      message : "Fill All Fields",
+      //    })
+      //  }
 
       //  dispatch(UserRegister(fname,email,password));
 

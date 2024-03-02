@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const Home = () => {
 
      const Destinations = [
-      { Place : 'New Delhi' ,  img : '/public/NewDelhi.jpg' },
-      { Place : 'Banglore ' ,  img : '/public/Banglore.jpg'  },
-      { Place : 'Mumbai'    ,  img : '/public/Mumbai.jpg' },
-      { Place : 'Chennai'   ,  img : '/public/Chennai.jpg' },
-      { Place : 'Hyderabad' ,  img : '/public/Hyderabad.jpg' }
+      { Place : 'New Delhi' ,  img : 'NewDelhi.jpg' },
+      { Place : 'Banglore ' ,  img : 'Banglore.jpg'  },
+      { Place : 'Mumbai'    ,  img : 'Mumbai.jpg' },
+      { Place : 'Chennai'   ,  img : 'Chennai.jpg' },
+      { Place : 'Hyderabad' ,  img : 'Hyderabad.jpg' }
      ]
 
   return (
