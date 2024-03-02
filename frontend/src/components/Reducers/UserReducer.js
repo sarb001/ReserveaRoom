@@ -23,13 +23,17 @@ export const RegisterUser = createReducer(initialState,{
 })
 
 export const LoginUser = createReducer(initialState ,{
-    LoginRequest :(state) => {
-        state.loading = true;
-     },
-     LoginPending : (state,action) => {
-        state.loading = false;
-     },
-     LoginFailed : (state,action) => {
-        state.loading = false;
-     }
+      LoginPending :(state) => {
+         state.loading = true;
+         state.error = false;
+      },
+      LoginSuccess : (state,action) => {
+         state.loading = false;
+         state.user = action.payload;
+         state.error = false;
+      },
+      LoginFailed : (state,action) => {
+         state.error = action.payload;
+         state.loading = false;
+      }
 })

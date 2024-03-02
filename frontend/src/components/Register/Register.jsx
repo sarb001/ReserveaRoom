@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import  { NavLink } from 'react-router-dom' ;
-import { useDispatch } from 'react-redux';
+import { useDispatch  } from 'react-redux';
 import { UserRegister } from '../Actions/UserActions';
-
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
    const [fname,setfname] = useState('');
@@ -10,10 +10,12 @@ const Register = () => {
    const [password,setpassword] = useState('');
 
    const dispatch = useDispatch();
+   const navigate = useNavigate();
 
    const HandleRegistration = async(e) => {
         e.preventDefault();
         dispatch(UserRegister(fname,email,password));
+        navigate('/login');
    }
 
   return (

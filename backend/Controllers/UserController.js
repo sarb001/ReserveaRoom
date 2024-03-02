@@ -28,9 +28,13 @@ export const RegisterUser = async(req,res) => {
 }
 
 export const LoginUser = async(req,res) => {
+    console.log('requested login Body -',req.body);
+
     const { email , password } = req.body;
+
     if(!email || !password){
         return res.status(400).json({
+             success : false,
              message: "Fill Empty Fields"
         })
     }
@@ -61,10 +65,12 @@ export const LoginUser = async(req,res) => {
         path : '/',
     });
     
+    const user = findUser;
+
     return res.status(200).json({
         success : true,
         token,
-        findUser
+        user
     })
 }
 

@@ -16,7 +16,7 @@ export const UserRegister = (fname,email,password)  => async(dispatch) => {
             }
         })
 
-        console.log('user Registered -',User);
+        console.log('user Registered -',data.user);
         toast.success(' User Registered ');
         dispatch({type: 'RegisterSuccess' , payload : data.user});
         
@@ -27,10 +27,30 @@ export const UserRegister = (fname,email,password)  => async(dispatch) => {
     }
 }
 
-export const UserLogin = async(req,res) => {
+export const UserLogin = (email,password) => async(dispatch) =>  {
     try {
+        dispatch({type:'LoginPending'});
+        
+        console.log('reaching Login 2 ');
+        console.log('reaching Login 3 ');
+        
+        const {data} = await  axios.post('/api/login' , 
+        {email,password},
+        {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+
+        console.log('reaching Login 3 33');
+
+        console.log('user Logging In-',data.user);
+        toast.success(' User Logged In ');
+        dispatch({type: 'LoginSuccess' , payload : data.user});
         
     } catch (error) {
-        
+        console.log('error in  Login -',error);
+        dispatch({type: 'LoginFailed' , payload :  error.response.data.message});
+        return toast.error(' Login Registration Failed ');
     }
 }
