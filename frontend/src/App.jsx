@@ -10,7 +10,6 @@ import PropertyListing from './components/PropertyListing/PropertyListing';
 import FilterSection from './components/FilterSection/FilterSection';
 import SpecificCardDetails from './components/FilterSection/SpecificCardDetails';
 
-
 function App() {
   return (
       <div className='mainapp'>
@@ -25,7 +24,6 @@ function App() {
               <Route path='/card/:id' element = {<SpecificCardDetails />}>  </Route>
             </Routes>
           {/* <Footer /> */}
-
       </div>
   )
 }

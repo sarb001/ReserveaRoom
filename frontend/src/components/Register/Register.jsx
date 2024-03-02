@@ -1,20 +1,24 @@
 import React, { useState } from 'react';
 import  { NavLink } from 'react-router-dom' ;
+import { useDispatch } from 'react-redux';
+import { UserRegister } from '../Actions/UserActions';
 
 
 const Register = () => {
-   const [name,setname] = useState('');
+   const [fname,setfname] = useState('');
    const [email,setemail] = useState('');
    const [password,setpassword] = useState('');
 
+   const dispatch = useDispatch();
+
    const HandleRegistration = () => {
-       if(!name || !email ||!password){
+       if(!fname || !email ||!password){
          return  res.status(400).json({
            message : "Fill All Fields",
          })
        }
 
-       
+      //  dispatch(UserRegister(fname,email,password));
 
    }
 
@@ -39,7 +43,7 @@ const Register = () => {
 
                   <div className='my-2 sm:flex sm:justify-evenly'>
                     <label> Name </label>
-                    <input type = "text"  placeholder='John'  value = {name} required/>
+                    <input type = "text"  placeholder='John'  value = {fname} required/>
                   </div>
 
                   <div className='my-2 sm:flex sm:justify-evenly'>

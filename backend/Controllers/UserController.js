@@ -76,13 +76,12 @@ export const Logout = async(req,res) => {
         })
 }
 
-
 export const AccessUser = async(req,res) => {
     try {
-        console.log('inside User Data 1 ');
-        console.log('inside User Data 2 ');
-        res.send(' Auth Working ')
+            const   User = await req.user;
+            console.log('Main User -',User);
+             res.send(' Auth Working ')
     } catch (error) {
-        
+            console.log('error -',error);
     }
 }

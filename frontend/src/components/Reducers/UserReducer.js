@@ -1,5 +1,3 @@
-// using init state 
-// create Slices 
 
 import { createReducer } from '@reduxjs/toolkit' ;
 

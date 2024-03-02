@@ -12,6 +12,6 @@ router.route('/logout').get(Logout);
 
 router.route('/auth').get( VerifyAuthentication ,AccessUser);
 
-AccessUser
+
 
 export default router;

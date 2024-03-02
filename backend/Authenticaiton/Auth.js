@@ -13,11 +13,10 @@ const VerifyAuthentication = async(req,res,next) => {
             })
         }
 
-        // token not present 401 Error 
         const Decoded =  jwt.verify(token,process.env.JWT_TOKEN);
-        // whole decoded data
         console.log('decoded is-',Decoded);
-        const getUser = await User.findById(Decoded._id);
+
+        req.user = await User.findById(Decoded._id);
         next();
 
     } catch (error) {
