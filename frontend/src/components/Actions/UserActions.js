@@ -22,8 +22,8 @@ export const UserRegister = (fname,email,password)  => async(dispatch) => {
         
     } catch (error) {
         console.log('error in  registration -',error);
-        toast.error(' User Registration Failed ');
-        return dispatch({type: 'RegisterFailed' , payload :  error.response.data.message});
+        dispatch({type: 'RegisterFailed' , payload :  error.response.data.message});
+        return toast.error(' User Registration Failed ');
     }
 }
 
@@ -39,12 +39,33 @@ export const UserLogin = (email,password) => async(dispatch) =>  {
             }
         })
 
-        toast.success(' User Logged In ');
         dispatch({type: 'LoginSuccess' , payload : data.user});
+        return toast.success(' User Logged In ');
         
     } catch (error) {
         console.log('error in  Login -',error);
         dispatch({type: 'LoginFailed' , payload :  error.response.data.message});
-        return toast.error(' Login Registration Failed ');
+        toast.error(' Login Registration Failed ');
+        return;
+    }
+}
+
+export const userLogout = () => async(dispatch) => {
+    try {
+        dispatch({type:'LogoutPending'});
+        const {data} = await axios.get('/api/logout' , {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+
+        dispatch({type:'LogoutSuccess' , payload : data.user })
+        console.log('data user logout -',data.user);
+        return toast.success(' User Logged Out ');
+
+    } catch (error) {
+        console.log('Logged Out User error -',error);
+        dispatch({type:'LogoutFailed'})
+        return toast.error('Logout Failed');
     }
 }
