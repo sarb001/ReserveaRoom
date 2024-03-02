@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaGlobe } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaMoon } from "react-icons/fa6";
@@ -25,7 +25,6 @@ const Navbar = () => {
       await dispatch(userLogout());
       navigate('/login');
    }
-
   return (
       <div className = {`${darkmode && "dark"}`}>
       <div className = 'bg-slate-400 sm:bg-neutral-700 md:bg-red-400  lg:bg-green-600  xl:bg-violet-600 2xl:bg-orange-500 text-black  dark:bg-black dark:text-white  w-full'>

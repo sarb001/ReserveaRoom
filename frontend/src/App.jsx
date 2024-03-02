@@ -9,19 +9,24 @@ import Navbar from './components/Navbar/Navbar';
 import PropertyListing from './components/PropertyListing/PropertyListing';
 import FilterSection from './components/FilterSection/FilterSection';
 import SpecificCardDetails from './components/FilterSection/SpecificCardDetails';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const {isAuthenticated} = useSelector(state => state.user);
+  console.log('isAuth -',isAuthenticated);
+
   return (
       <div className='mainapp'>
-         <Navbar />
+        {isAuthenticated &&  <Navbar />}
             <Routes>
-              <Route path='/' element = {<Home />}>  </Route>
-              <Route path='/register' element = {<Register />}>  </Route>
-              <Route path='/login' element = {<Login />}>  </Route>
-              <Route path='/translation' element = {<Translation />}>  </Route>
-              <Route path='/listing' element = {<PropertyListing />}>  </Route>
-              <Route path='/filter' element = {<FilterSection />}>  </Route>
-              <Route path='/card/:id' element = {<SpecificCardDetails />}>  </Route>
+              <Route path='/' element = {isAuthenticated ?<Home /> : <Login />}>  </Route>
+              <Route path='/register' element = {isAuthenticated ?<Home /> :<Register />}>  </Route>
+              <Route path='/login' element = {isAuthenticated ? <Home /> :<Login />}>  </Route>
+              <Route path='/translation' element = {isAuthenticated ?  <Translation /> : <Login /> }>  </Route>
+              <Route path='/listing' element = {isAuthenticated ? <PropertyListing /> : <Login />}>  </Route>
+              <Route path='/filter' element =  {isAuthenticated  ? <FilterSection /> : <Login />}>  </Route>
+              <Route path='/card/:id' element = {isAuthenticated  ? <SpecificCardDetails /> : <Login />} ></Route>
             </Routes>
           {/* <Footer /> */}
       </div>
