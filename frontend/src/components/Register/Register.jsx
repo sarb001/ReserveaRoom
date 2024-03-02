@@ -11,23 +11,15 @@ const Register = () => {
 
    const dispatch = useDispatch();
 
-   const HandleRegistration = () => {
-    console.log('reachedd');
-      //  if(!fname || !email ||!password){
-      //    return  res.status(400).json({
-      //      message : "Fill All Fields",
-      //    })
-      //  }
-
-      //  dispatch(UserRegister(fname,email,password));
-
+   const HandleRegistration = async(e) => {
+        e.preventDefault();
+        dispatch(UserRegister(fname,email,password));
    }
 
   return (
-    <div className=' m-8 md:flex  md:justify-center md:h-[70vh]'>
+    <div className=' m-8 md:flex  md:justify-center md:h-[70vh] text-black'>
          <div className=' w-full p-8  bg-[rgb(33,47,67)] md:bg-lime-400   
-          md:grid md:justify-normal md:max-w-[30rem]
-         text-white text-xl'>
+          md:grid md:justify-normal md:max-w-[30rem] text-xl'>
 
             <div className="account sm:text-center "> 
              <span className='text-2xl sm:text-3xl'> Create an Account </span>
@@ -36,25 +28,26 @@ const Register = () => {
             <div className='grid sm:grid'>
 
                 <form onSubmit={HandleRegistration}>
-              
-                  <div className='my-2 sm:flex sm:justify-evenly md:flex '>
-                    <label> Your email </label>
-                    <input type = "email"  placeholder='name@company.com' />
-                  </div>
 
                   <div className='my-2 sm:flex sm:justify-evenly'>
                     <label> Name </label>
-                    <input type = "text"  placeholder='John'  value = {fname} required/>
+                    <input type = "text"  placeholder='Johny'  value = {fname} 
+                    onChange = {(e) => setfname(e.target.value)}
+                    required/>
                   </div>
 
                   <div className='my-2 sm:flex sm:justify-evenly'>
                     <label> Email </label>
-                    <input type = "email"  placeholder='johndoe@gmail' value = {email} required/>
+                    <input type = "email"  placeholder='johndoe@gmail' value = {email} 
+                    onChange = {(e) => setemail(e.target.value)}
+                    required/>
                   </div>
 
                   <div className='my-2 sm:flex sm:justify-evenly'>
                     <label> Password </label>
-                    <input type = "password"  placeholder='*******' value = {password} required/>
+                    <input type = "password"  placeholder='*******' value = {password}
+                    onChange = {(e) => setpassword(e.target.value)}
+                    required/>
                   </div>
 
                   <div className='my-2 sm:flex sm:justify-evenly'>

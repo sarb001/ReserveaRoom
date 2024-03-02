@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const Home = () => {
 
@@ -13,7 +14,8 @@ const Home = () => {
 
   return (
     <div className='m-4 xl:m-8'>
-       <div className='text-5xl py-2'> Find your next stay  </div>
+       <div className='text-5xl py-2'> Find your next stay  
+       </div>
        <div className='text-xl py-2'> Search low prices on hotels, homes and much more.... </div>
 
           {/*  Calendar Here   */}
