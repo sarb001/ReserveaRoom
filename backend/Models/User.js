@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt' ;
 import jwt from 'jsonwebtoken' ;
 
 const UserSchema = new  mongoose.Schema({
-    name :{
+    fname :{
         type : String,
         required : [true,'Please Enter a Name']
     },

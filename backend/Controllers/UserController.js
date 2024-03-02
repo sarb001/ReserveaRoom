@@ -2,16 +2,16 @@ import User from "../Models/User.js";
 
 
 export const RegisterUser = async(req,res) => {
-    const { name ,email ,password  } = req.body;
+    const { fname ,email ,password  } = req.body;
 
-    if(!name || !email || !password){
+    if(!fname || !email || !password){
             return res.status(400).json({
                  message : "Fill All the Fields"
             })
     }
 
       const NewUser = await User.create({
-        name,
+        fname,
         email,
         password,
         // avatar: {
