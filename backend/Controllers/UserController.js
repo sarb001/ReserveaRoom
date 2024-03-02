@@ -28,7 +28,6 @@ export const RegisterUser = async(req,res) => {
 }
 
 export const LoginUser = async(req,res) => {
-    console.log('requested login Body -',req.body);
 
     const { email , password } = req.body;
 
@@ -59,7 +58,6 @@ export const LoginUser = async(req,res) => {
     const token = await findUser.generateToken(findUser._id);
     console.log('token is -',token);
 
-    // const token = '123';
     res.cookie('token' , token , {
         maxAge : new Date(Date.now() + 900000),
         path : '/',

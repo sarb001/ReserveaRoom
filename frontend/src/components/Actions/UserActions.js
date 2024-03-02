@@ -31,9 +31,6 @@ export const UserLogin = (email,password) => async(dispatch) =>  {
     try {
         dispatch({type:'LoginPending'});
         
-        console.log('reaching Login 2 ');
-        console.log('reaching Login 3 ');
-        
         const {data} = await  axios.post('/api/login' , 
         {email,password},
         {
@@ -42,9 +39,6 @@ export const UserLogin = (email,password) => async(dispatch) =>  {
             }
         })
 
-        console.log('reaching Login 3 33');
-
-        console.log('user Logging In-',data.user);
         toast.success(' User Logged In ');
         dispatch({type: 'LoginSuccess' , payload : data.user});
         

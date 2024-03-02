@@ -3,6 +3,7 @@ import { FaGlobe } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaMoon } from "react-icons/fa6";
 import { IoSunny } from "react-icons/io5";
+import { useSelector }  from 'react-redux';
 
 import { NavLink } from 'react-router-dom' ;
 
@@ -10,14 +11,12 @@ const Navbar = () => {
     const [showbar,setshowbar] = useState(false);
     const [darkmode,setdarkmode] = useState(false);
 
+   const shownavlinks = () => { setshowbar(!showbar)}
+   const changemode   = () => { setdarkmode(!darkmode)}
 
-   const shownavlinks = () => {
-     setshowbar(!showbar);
-   }
+   const isAuthenticated = useSelector(state => state.user);
+   console.log('isAuth -',isAuthenticated);
 
-   const changemode = () => {
-     setdarkmode(!darkmode)
-   }
 
   return (
       <div className = {`${darkmode && "dark"}`}>
@@ -42,6 +41,9 @@ const Navbar = () => {
                    <NavLink to = "/listing">  List your Property  </NavLink>     
                  </li>
 
+                {!isAuthenticated ? 
+                  <>
+
                  <li  className='py-2'> 
                   <button className='bg-slate-100 text-blue-600 p-1'> 
                     <NavLink to='/register'> Register </NavLink>
@@ -53,6 +55,15 @@ const Navbar = () => {
                       <NavLink to='/login'> Login </NavLink>
                     </button>
                  </li>
+                 
+                 </> 
+                   :
+                 <li  className='py-2'> 
+                  <button className='bg-slate-100 text-blue-600 p-1'> 
+                      <NavLink to='/logout'> Logout </NavLink>
+                    </button>
+                 </li>
+}
                </ul>
               </div>
             }
