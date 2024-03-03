@@ -17,11 +17,11 @@ const Navbar = () => {
    const shownavlinks = () => { setshowbar(!showbar)}
    const changemode   = () => { setdarkmode(!darkmode)}
 
-   const {isAuthenticated } = useSelector(state => state.user);
-   console.log('isAuth -',isAuthenticated);
-
-    const { user } = useSelector(state => state.profile);
-    console.log('user profile -',user);
+   const { loading  } = useSelector(state => state.user);
+   
+   const { user , isAuthenticated } = useSelector(state => state.profile);
+   console.log('user profilee  -',user);
+   console.log('isAuthh 1 -',isAuthenticated);
 
    const LogoutHandler = async(e) => {  
       e.preventDefault();
@@ -29,9 +29,6 @@ const Navbar = () => {
       navigate('/login');
    }
 
-   useEffect(() => {
-       dispatch(loaduser());
-   },[dispatch])
 
   return (
       <div className = {`${darkmode && "dark"}`}>
@@ -71,9 +68,11 @@ const Navbar = () => {
                       </button>
                   </li>
                   
-                  </> 
+                    </> 
+
                     :
-                    <>
+
+                      <>
                     <li  className='py-2'> 
                       <button className='bg-slate-100 text-blue-600 p-1'
                         onClick={LogoutHandler}
@@ -83,7 +82,7 @@ const Navbar = () => {
 
                     <li  className='py-2'> 
                       <button className='bg-slate-100 text-blue-600 p-1' > 
-                        {user.fname}  
+                        { loading === true ? "<h1> Loading... </h1>" :  <> {user.fname} </>}  
                       </button>
                     </li>
                       </>

@@ -34,6 +34,7 @@ export const UserLogin = (email,password) => async(dispatch) =>  {
         const {data} = await  axios.post('/api/login' , 
         {email,password},
         {
+            withCredentials : true,
             headers : {
                 'Content-Type' : 'application/json'
             }
@@ -77,7 +78,7 @@ export const loaduser = () => async(dispatch) => {
 
          const { data } = await  axios.get(`/api/profile`);
 
-         console.log('data loading...',data);
+         console.log('data loading mainly...',data);
          dispatch({type:"UserProfileSuccess", payload : data.user});
 
     } catch (error) {

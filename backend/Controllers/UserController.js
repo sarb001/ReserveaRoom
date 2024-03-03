@@ -65,7 +65,7 @@ export const LoginUser = async(req,res) => {
     
     const user = findUser;
 
-    return res.status(200).json({
+    return res.status(200).json({          
         success : true,
         token,
         user
@@ -82,6 +82,7 @@ export const Logout = async(req,res) => {
 
 export const AccessUser = async(req,res) => {
     try {
+         console.log('requested access -',req);
             const   User = await req.user;
             console.log('Main User -',User);
              res.send(' Auth Working ')

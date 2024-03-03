@@ -9,24 +9,31 @@ import Navbar from './components/Navbar/Navbar';
 import PropertyListing from './components/PropertyListing/PropertyListing';
 import FilterSection from './components/FilterSection/FilterSection';
 import SpecificCardDetails from './components/FilterSection/SpecificCardDetails';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { loaduser } from './components/Actions/UserActions';
 
 function App() {
 
-  const {isAuthenticated} = useSelector(state => state.user);
-  console.log('isAuth -',isAuthenticated);
+  const {isAuthenticated} = useSelector(state => state.profile);
+  console.log('isAuth profile -',isAuthenticated);
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(loaduser());
+  },[]) 
 
   return (
       <div className='mainapp'>
         {isAuthenticated &&  <Navbar />}
             <Routes>
-              <Route path='/' element = {isAuthenticated ?<Home /> : <Login />}>  </Route>
-              <Route path='/register' element = {isAuthenticated ?<Home /> :<Register />}>  </Route>
+              <Route path='/' element = {isAuthenticated ? <Home /> : <Login />}>  </Route>
+              <Route path='/register' element = {isAuthenticated ? <Home /> :<Register />}>  </Route>
               <Route path='/login' element = {isAuthenticated ? <Home /> :<Login />}>  </Route>
               <Route path='/translation' element = {isAuthenticated ?  <Translation /> : <Login /> }>  </Route>
               <Route path='/listing' element = {isAuthenticated ? <PropertyListing /> : <Login />}>  </Route>
               <Route path='/filter' element =  {isAuthenticated  ? <FilterSection /> : <Login />}>  </Route>
-              <Route path='/card/:id' element = {isAuthenticated  ? <SpecificCardDetails /> : <Login />} ></Route>
+              <Route path='/card/:id' element = {isAuthenticated  ? <SpecificCardDetails /> : <Login />} >  </Route>
             </Routes>
           {/* <Footer /> */}
       </div>
