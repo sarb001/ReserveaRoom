@@ -35,7 +35,6 @@ function App() {
               <Route path='/filter' element =  {isAuthenticated  ? <FilterSection /> : <Login />}>  </Route>
               <Route path='/card/:id' element = {isAuthenticated  ? <SpecificCardDetails /> : <Login />} >  </Route>
             </Routes>
-          {/* <Footer /> */}
       </div>
   )
 }

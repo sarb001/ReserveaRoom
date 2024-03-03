@@ -74,22 +74,3 @@ export const UserReducer = createReducer(initialState,{
          },
       })
          
-
-// export const ProfileReducer = createReducer(initialState, {
-//       UserProfilePending :(state) => {
-//       state.loading = true;
-//       state.error = false;
-//       state.isAuthenticated = false;
-//     },
-//     UserProfileSuccess : (state,action) => {
-//        state.loading = false;
-//        state.user = action.payload;
-//        state.isAuthenticated = true;
-//        state.error = false;
-//     },
-//     UserProfileFailed : (state,action) => {
-//       state.error = action.payload;
-//       state.loading = false;
-//       state.isAuthenticated = false;
-//    },
-// })

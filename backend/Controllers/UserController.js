@@ -1,4 +1,5 @@
 import User from "../Models/User.js";
+import Hotel from "../Models/Hotels.js";
 
 
 export const RegisterUser = async(req,res) => {
@@ -112,5 +113,38 @@ export const MyProfile = async(req,res) => {
 
     } catch (error) {
         console.log('error -',error);
+    }
+}
+
+export const ListHotels = async(req,res) => {
+    try {
+        const { Hotelname , HoteltagLine , HotelCity , HotelLocation  ,HotelDistance , TotalRooms ,PricingPerRoom ,BedType } = 
+        req.body;
+
+        if(!Hotelname || !HoteltagLine || !HotelCity || !HotelLocation || !HotelDistance || !TotalRooms || !PricingPerRoom || !BedType){
+            return res.status(400).json({
+                message : "Fill All the Fields"
+           })
+        }
+ 
+        const NewHotel = await Hotel.create({
+            Hotelname,
+            HoteltagLine,
+            HotelCity,
+            HotelDistance,
+            HotelLocation,
+            TotalRooms,
+            PricingPerRoom,
+            BedType
+        });
+        console.log('New Hotel Created -',NewHotel);
+        await NewHotel.save(); 
+        return res.status(201).json({
+            message : " Hotel Listed Success ",
+            NewHotel
+         })
+
+    } catch (error) {
+        console.log('error Hotels -',error);
     }
 }
