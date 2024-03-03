@@ -89,3 +89,27 @@ export const AccessUser = async(req,res) => {
             console.log('error -',error);
     }
 }
+
+export const MyProfile = async(req,res) => {
+    try {
+        console.log('requeste profile- ',req.user);
+        const user = await User.findById(req.user._id).select("+password");
+        console.log('userProfiledd  -',User);
+
+        if(!user){
+            return res.status(400).json({
+                success : false,
+                message : " User not Existed "
+            })
+        }
+
+       return res.status(200).json({
+             user,
+             success : true,
+             message : " User Profile Founded "
+        })
+
+    } catch (error) {
+        console.log('error -',error);
+    }
+}

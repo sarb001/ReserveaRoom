@@ -69,3 +69,19 @@ export const userLogout = () => async(dispatch) => {
         return toast.error('Logout Failed');
     }
 }
+
+
+export const loaduser = () => async(dispatch) => {
+    try {
+         dispatch({type:"UserProfilePending"});
+
+         const { data } = await  axios.get(`/api/profile`);
+
+         console.log('data loading...',data);
+         dispatch({type:"UserProfileSuccess", payload : data.user});
+
+    } catch (error) {
+        console.log('error in loading -',error);
+        dispatch({type:"UserProfileFailed",payload: error.response.data.message})
+    }
+}

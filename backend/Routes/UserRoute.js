@@ -1,5 +1,5 @@
 import express from 'express';
-import { AccessUser, LoginUser, Logout, RegisterUser } from '../Controllers/UserController.js';
+import { AccessUser, LoginUser, Logout, MyProfile, RegisterUser } from '../Controllers/UserController.js';
 import  VerifyAuthentication  from '../Authenticaiton/Auth.js';
 
 const router = express.Router();
@@ -11,6 +11,8 @@ router.route('/login').post(LoginUser);
 router.route('/logout').get(Logout);
 
 router.route('/auth').get( VerifyAuthentication ,AccessUser);
+
+router.route('/profile').get(VerifyAuthentication ,MyProfile);
 
 
 

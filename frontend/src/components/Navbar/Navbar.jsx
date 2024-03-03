@@ -6,7 +6,7 @@ import { IoSunny } from "react-icons/io5";
 import { useDispatch, useSelector }  from 'react-redux';
 
 import { NavLink, useNavigate } from 'react-router-dom' ;
-import { userLogout } from '../Actions/UserActions';
+import { loaduser, userLogout } from '../Actions/UserActions';
 
 const Navbar = () => {
     const [showbar,setshowbar] = useState(false);
@@ -17,14 +17,22 @@ const Navbar = () => {
    const shownavlinks = () => { setshowbar(!showbar)}
    const changemode   = () => { setdarkmode(!darkmode)}
 
-   const {isAuthenticated} = useSelector(state => state.user);
+   const {isAuthenticated } = useSelector(state => state.user);
    console.log('isAuth -',isAuthenticated);
 
-   const LogoutHandler = async(e) => {
+    const { user } = useSelector(state => state.profile);
+    console.log('user profile -',user);
+
+   const LogoutHandler = async(e) => {  
       e.preventDefault();
       await dispatch(userLogout());
       navigate('/login');
    }
+
+   useEffect(() => {
+       dispatch(loaduser());
+   },[dispatch])
+
   return (
       <div className = {`${darkmode && "dark"}`}>
       <div className = 'bg-slate-400 sm:bg-neutral-700 md:bg-red-400  lg:bg-green-600  xl:bg-violet-600 2xl:bg-orange-500 text-black  dark:bg-black dark:text-white  w-full'>
@@ -65,12 +73,20 @@ const Navbar = () => {
                   
                   </> 
                     :
-                  <li  className='py-2'> 
-                    <button className='bg-slate-100 text-blue-600 p-1'
-                      onClick={LogoutHandler}
-                    > Logout
+                    <>
+                    <li  className='py-2'> 
+                      <button className='bg-slate-100 text-blue-600 p-1'
+                        onClick={LogoutHandler}
+                        > Logout
+                        </button>
+                    </li>
+
+                    <li  className='py-2'> 
+                      <button className='bg-slate-100 text-blue-600 p-1' > 
+                        {user.fname}  
                       </button>
-                  </li>
+                    </li>
+                      </>
   }
                 </ul>
                 </div>
