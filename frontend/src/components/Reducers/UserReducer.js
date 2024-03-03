@@ -72,5 +72,21 @@ export const UserReducer = createReducer(initialState,{
             state.loading = false;
             state.isAuthenticated = false;
          },
+         HotelListingPending :(state) => {
+            state.loading = true;
+            state.error = false;
+            state.isAuthenticated = false;
+          },
+          HotelListingSuccess : (state,action) => {
+             state.loading = false;
+             state.hotel = action.payload;
+             state.isAuthenticated = true;
+             state.error = false;
+          },
+          HotelListingFailed : (state,action) => {
+            state.error = action.payload;
+            state.loading = false;
+            state.isAuthenticated = false;
+         },
       })
          

@@ -19,9 +19,9 @@ function App() {
   console.log('isAuth profile -',isAuthenticated);
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    dispatch(loaduser());
-  },[]) 
+    useEffect(() => {
+      dispatch(loaduser());
+    },[]) 
 
   return (
       <div className='mainapp'>

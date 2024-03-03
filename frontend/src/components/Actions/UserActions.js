@@ -86,3 +86,27 @@ export const loaduser = () => async(dispatch) => {
         dispatch({type:"UserProfileFailed",payload: error.response.data.message})
     }
 }
+
+export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,HotelDistance,TotalRooms,PricingPerRoom) => async(dispatch) => {
+    try {
+        dispatch({type:'HotelListingPending'});
+
+        const {data} = await axios.post('/api/listing' , 
+        {Hotelname,HoteltagLine,HotelCity,HotelLocation,
+        HotelDistance,TotalRooms ,PricingPerRoom} , 
+        {
+            withCredentials : true,
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+        console.log('Hotel data -',{data});
+        dispatch({type:'HotelListingSuccess', payload : data.hotel});
+        return  toast.success('Added to  the List');
+
+    } catch (error) {
+        console.log('error lsting -',error);
+        dispatch({type:'HotelListingFailed', payload : error.response.data.message });
+        return toast.error(' Try Adding Again ');
+    }
+}

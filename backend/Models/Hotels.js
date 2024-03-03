@@ -11,7 +11,8 @@ const HotelSchema = new mongoose.Schema({
     },
     HoteltagLine : {
         type:String,
-        required : [true,'Please Enter Hotel TagLine']
+        required : [true,'Please Enter Hotel TagLine'],
+        unique : true
     },
     // images - Hotel Image 
     HotelCity : {
@@ -20,8 +21,11 @@ const HotelSchema = new mongoose.Schema({
     },
     HotelLocation: {
         type :String,
-        required : [true , "Please Enter Proper Location "]
+        required : [true , "Please Enter Proper Location "],
+        unique : true
     },
+  
+    
     HotelDistance : {
         type :Number,
         required : [true , "Please Enter Distance"],
@@ -37,11 +41,12 @@ const HotelSchema = new mongoose.Schema({
         required : [true , "Enter Price Per Room"],
         min: [0, 'Pricing cannot be negative']
     },
-    BedType : {
-        type :String,
-        required : [true , "Please Enter Bed Type"],
-        // enum  : BedTypeoptions
-    }
+
+    // BedType : {
+    //     type :String,
+    //     required : [true , "Please Enter Bed Type"],
+    //     // enum  : BedTypeoptions
+    // },
 })
 
 const Hotel = mongoose.model('Hotel' , HotelSchema);

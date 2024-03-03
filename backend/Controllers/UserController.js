@@ -118,16 +118,18 @@ export const MyProfile = async(req,res) => {
 
 export const ListHotels = async(req,res) => {
     try {
-        const { Hotelname , HoteltagLine , HotelCity , HotelLocation  ,HotelDistance , TotalRooms ,PricingPerRoom ,BedType } = 
+         console.log('req.body -',req.body);
+        const { Hotelname , HoteltagLine , HotelCity , HotelLocation  ,HotelDistance , TotalRooms , PricingPerRoom} = 
         req.body;
 
-        if(!Hotelname || !HoteltagLine || !HotelCity || !HotelLocation || !HotelDistance || !TotalRooms || !PricingPerRoom || !BedType){
+        if(!Hotelname || !HoteltagLine || !HotelCity || !HotelLocation 
+        || !HotelDistance || !TotalRooms || !PricingPerRoom){
             return res.status(400).json({
-                message : "Fill All the Fields"
+                message : "Fill All the Fieldss"
            })
         }
  
-        const NewHotel = await Hotel.create({
+        const hotel = await Hotel.create({
             Hotelname,
             HoteltagLine,
             HotelCity,
@@ -135,13 +137,13 @@ export const ListHotels = async(req,res) => {
             HotelLocation,
             TotalRooms,
             PricingPerRoom,
-            BedType
+            // BedType
         });
-        console.log('New Hotel Created -',NewHotel);
-        await NewHotel.save(); 
+        console.log('New Hotel Created -',hotel);
+         await hotel.save(); 
         return res.status(201).json({
             message : " Hotel Listed Success ",
-            NewHotel
+            hotel
          })
 
     } catch (error) {
