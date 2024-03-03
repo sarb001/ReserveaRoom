@@ -74,8 +74,9 @@ const Navbar = () => {
                       <>
                     <li  className='py-2'> 
                       <button className='bg-slate-100 text-blue-600 p-1'
-                        onClick={LogoutHandler}
-                        > Logout
+                        onClick={LogoutHandler}>
+                          {loading ? "Logging Out.." : "Logout"}
+                           
                         </button>
                     </li>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import  { NavLink } from 'react-router-dom' ;
 import  { useNavigate }  from 'react-router-dom' ;
 import { UserLogin } from '../Actions/UserActions';
@@ -11,6 +11,8 @@ const Login = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const { loading } = useSelector(state => state.user);
 
     const Loginhandler = async(e) => {
       console.log('reaching Login');
@@ -54,7 +56,7 @@ const Login = () => {
 
               <div className='sm:text-center'>
                 <button className='p-2 bg-slate-900 text-white'> 
-                  Sign In 
+                   {loading ? "Signing in...."  : " Sign In "} 
                 </button>
               </div>
 

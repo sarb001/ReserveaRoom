@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import  { NavLink } from 'react-router-dom' ;
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { UserRegister } from '../Actions/UserActions';
 import { useNavigate } from 'react-router-dom'
 
@@ -11,6 +11,9 @@ const Register = () => {
 
    const dispatch = useDispatch();
    const navigate = useNavigate();
+
+  
+   const { loading } = useSelector(state => state.user);
 
    const HandleRegistration = async(e) => {
         e.preventDefault();
@@ -59,7 +62,8 @@ const Register = () => {
             
                     <div className='sm:text-center'>
                       <button className='p-2 bg-slate-900 text-white'> 
-                        Create an Account 
+                       {loading ? "Creating... " : "Create an Account "}
+                        
                       </button>
                     </div>
                   
