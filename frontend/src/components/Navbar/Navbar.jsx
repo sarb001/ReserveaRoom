@@ -17,9 +17,8 @@ const Navbar = () => {
    const shownavlinks = () => { setshowbar(!showbar)}
    const changemode   = () => { setdarkmode(!darkmode)}
 
-   const { loading  } = useSelector(state => state.user);
-   
-   const { user , isAuthenticated } = useSelector(state => state.profile);
+   const { loading , user , isAuthenticated  } = useSelector(state => state.user);
+  
    console.log('user profilee  -',user);
    console.log('isAuthh 1 -',isAuthenticated);
 
