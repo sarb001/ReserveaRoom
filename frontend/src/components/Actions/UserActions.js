@@ -87,13 +87,13 @@ export const loaduser = () => async(dispatch) => {
     }
 }
 
-export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,HotelDistance,TotalRooms,PricingPerRoom ,BedType) => async(dispatch) => {
+export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,HotelDistance,TotalRooms,PricingPerRoom ,BedType ,Meals ,PropertyType , Adults ) => async(dispatch) => {
     try {
         dispatch({type:'HotelListingPending'});
 
         const {data} = await axios.post('/api/listing' , 
         {Hotelname,HoteltagLine,HotelCity,HotelLocation,
-        HotelDistance,TotalRooms ,PricingPerRoom ,BedType} , 
+        HotelDistance,TotalRooms ,PricingPerRoom ,BedType  , Meals ,PropertyType , Adults } , 
         {
             withCredentials : true,
             headers : {

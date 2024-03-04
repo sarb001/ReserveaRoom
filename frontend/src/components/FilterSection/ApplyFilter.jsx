@@ -57,10 +57,6 @@ const ApplyFilter = () => {
                                         <input  type = "checkbox"  />
                                         <label> Villas </label>
                                 </div>
-                                <div>
-                                        <input  type = "checkbox"  />
-                                        <label> Entire homes & apartments </label>
-                                </div>
                     </div>
     </div>
   )

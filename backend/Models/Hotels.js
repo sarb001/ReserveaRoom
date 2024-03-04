@@ -10,6 +10,7 @@ const HotelSchema = new mongoose.Schema({
     Hotelname : {
         type:String,
         required : [true,'Please Enter Hotel Name'],
+        unique : true
     },
     HoteltagLine : {
         type:String,
@@ -26,8 +27,6 @@ const HotelSchema = new mongoose.Schema({
         required : [true , "Please Enter Proper Location "],
         unique : true
     },
-  
-    
     HotelDistance : {
         type :Number,
         required : [true , "Please Enter Distance"],
@@ -53,11 +52,17 @@ const HotelSchema = new mongoose.Schema({
         required : [true , "Please Enter Meal Type"],
         // enum : MealOptions
     },
+
     PropertyType : {
         type : String,
         required : [true , "Please Enter Property Type"],
         // enum : PropertyType
-    }
+    },
+    Adults : {
+        type :Number,
+        required : [true , "Please Enter Adult Type"],
+        min: [0, 'TotalAdutls Number cannot be negative'] 
+    },
 })
 
 const Hotel = mongoose.model('Hotel' , HotelSchema);
@@ -66,6 +71,6 @@ export default Hotel;
 
 
 
-// startdate // endatate for calendar 
+// startdate        // endDate for calendar 
 // no of adults , bed rooms 
 

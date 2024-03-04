@@ -12,7 +12,11 @@ const PropertyListing = () => {
   const [HoteltagLine,setHoteltagLine] = useState('');
   const [HotelCity,setHotelCity] = useState('');
   const [HotelLocation,setHotelLocation] = useState('');
+
+  const [Meals,setMeals] = useState('');
+  const [PropertyType,setPropertyType] = useState('');
   
+  const [Adults,setAdults] = useState(0);
   const [HotelDistance,setHotelDistance] = useState(0);
   const [TotalRooms,setTotalRooms] = useState(0);
   const [PricingPerRoom,setPricingPerRoom] = useState(0);
@@ -24,7 +28,7 @@ const PropertyListing = () => {
   const handleHotelCreation = async(e) => {
     e.preventDefault();
      await dispatch(HotelListing(Hotelname,HoteltagLine,HotelCity,HotelLocation,
-      HotelDistance,TotalRooms , PricingPerRoom , BedType));
+      HotelDistance,TotalRooms , PricingPerRoom ,Meals  , BedType ,PropertyType , Adults ));
       navigate('/filter');
   }
 
@@ -110,7 +114,6 @@ const PropertyListing = () => {
                       required />
                     </div> 
 
-
                     <div className='my-2 sm:flex sm:justify-between mt-8'>
                         <label> Types of Bed Available  </label>
                     <input  type = "text"  placeholder='King-Size...'  
@@ -118,6 +121,31 @@ const PropertyListing = () => {
                      onChange={(e) => setBedType(e.target.value)} required/>
                     </div>
 
+                    <div className='my-2 sm:flex sm:justify-between mt-8'>
+                        <label> Meals  </label>
+                    <input  type = "text"  placeholder='Breakfast'  
+                      value =  {Meals}
+                     onChange={(e) => setMeals(e.target.value)} required/>
+                    </div>
+
+
+                    <div className='my-2 sm:flex sm:justify-between mt-8'>
+                        <label> No. of Adults  </label>
+                    <input  type = "number"  placeholder='30'  
+                     value={Adults}
+                     onChange={(e) => setAdults(e.target.value)} required />
+                    </div>
+
+                    
+                    <div className='my-2 sm:flex sm:justify-between mt-8'>
+                        <label> Types of Properties  </label>
+                    <input  type = "text"  placeholder='Hotels'  
+                     value={PropertyType}
+                     onChange={(e) => setPropertyType(e.target.value)} required/>
+                    </div> 
+
+
+                    {/* Adults */}
                     <div className='sm:text-center'>
                     <button type = "submit" className='p-2 bg-slate-900 text-white'> 
                        {loading ? "Adding..." : " Add Now "}
