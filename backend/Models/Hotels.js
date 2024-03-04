@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
-const BedTypeoptions = ['Twin Bed' , 'Double Bed']
+// const BedTypeoptions = ['Twin Bed' , 'Double Bed'];
 
+// const MealOptions = ['Self Catering', 'All meals included' ,'Breakfast & lunch included'];
+
+// const PropertyType = ['Hotels' ,'Apartments' ,'Villas' ,'Entire homes & apartments']
 
 const HotelSchema = new mongoose.Schema({
     Hotelname : {
@@ -45,6 +48,16 @@ const HotelSchema = new mongoose.Schema({
         required : [true , "Please Enter Bed Type"],
         // enum  : BedTypeoptions
     },
+    Meals: {
+        type:String,
+        required : [true , "Please Enter Meal Type"],
+        // enum : MealOptions
+    },
+    PropertyType : {
+        type : String,
+        required : [true , "Please Enter Property Type"],
+        // enum : PropertyType
+    }
 })
 
 const Hotel = mongoose.model('Hotel' , HotelSchema);
