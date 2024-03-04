@@ -50,3 +50,9 @@ const HotelSchema = new mongoose.Schema({
 const Hotel = mongoose.model('Hotel' , HotelSchema);
 
 export default Hotel;
+
+
+
+// startdate // endatate for calendar 
+// no of adults , bed rooms 
+

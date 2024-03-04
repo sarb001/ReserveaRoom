@@ -9,8 +9,8 @@ const ApplyFilter = () => {
 
                    <div className='my-4'>
                             <select>
-                              <option value='top-pics'> Our Top Pics </option>
-                              <option value='discounts'> Our  Discount First </option>
+                              <option value='top-pics'> Price : low to highest </option>
+                              <option value='discounts'> Distance from Center </option>
                             </select>
                     </div>
 
@@ -40,10 +40,6 @@ const ApplyFilter = () => {
                                         <input  type = "checkbox"  />
                                         <label>   All meals included </label>
                                 </div>
-                                <div>
-                                        <input  type = "checkbox"  />
-                                        <label>  Breakfast included </label>
-                                </div>
                     </div>
 
                     <div  className='my-4'>
@@ -56,10 +52,7 @@ const ApplyFilter = () => {
                                         <input  type = "checkbox"  />
                                         <label> Apartments </label>
                                 </div>
-                                <div>
-                                        <input  type = "checkbox"  />
-                                        <label> HomeStays Resorts </label>
-                                </div>
+                                
                                 <div>
                                         <input  type = "checkbox"  />
                                         <label> Villas </label>
