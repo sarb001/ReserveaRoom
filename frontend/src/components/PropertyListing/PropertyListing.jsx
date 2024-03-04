@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import '../PropertyListing/PropertyListing.css' ;
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HotelListing } from '../Actions/UserActions';
 
 const PropertyListing = () => {
@@ -12,17 +12,19 @@ const PropertyListing = () => {
   const [HoteltagLine,setHoteltagLine] = useState('');
   const [HotelCity,setHotelCity] = useState('');
   const [HotelLocation,setHotelLocation] = useState('');
-  // const [BedType,setBedType] = useState('');
- 
+  
   const [HotelDistance,setHotelDistance] = useState(0);
   const [TotalRooms,setTotalRooms] = useState(0);
   const [PricingPerRoom,setPricingPerRoom] = useState(0);
+  
+  const [BedType,setBedType] = useState('');
 
+   const { loading }  = useSelector(state => state.user);
 
   const handleHotelCreation = async(e) => {
     e.preventDefault();
      await dispatch(HotelListing(Hotelname,HoteltagLine,HotelCity,HotelLocation,
-      HotelDistance,TotalRooms , PricingPerRoom));
+      HotelDistance,TotalRooms , PricingPerRoom , BedType));
       navigate('/filter');
   }
 
@@ -109,16 +111,16 @@ const PropertyListing = () => {
                     </div> 
 
 
-                    {/* <div className='my-2 sm:flex sm:justify-between mt-8'>
+                    <div className='my-2 sm:flex sm:justify-between mt-8'>
                         <label> Types of Bed Available  </label>
                     <input  type = "text"  placeholder='King-Size...'  
                      value={BedType}
                      onChange={(e) => setBedType(e.target.value)} required/>
-                    </div> */}
+                    </div>
 
                     <div className='sm:text-center'>
                     <button type = "submit" className='p-2 bg-slate-900 text-white'> 
-                        Add Now 
+                       {loading ? "Adding..." : " Add Now "}
                     </button>
                     </div>
 

@@ -119,11 +119,10 @@ export const MyProfile = async(req,res) => {
 export const ListHotels = async(req,res) => {
     try {
          console.log('req.body -',req.body);
-        const { Hotelname , HoteltagLine , HotelCity , HotelLocation  ,HotelDistance , TotalRooms , PricingPerRoom} = 
-        req.body;
+        const { Hotelname , HoteltagLine , HotelCity , HotelLocation  ,HotelDistance , TotalRooms , PricingPerRoom , BedType} =  req.body;
 
         if(!Hotelname || !HoteltagLine || !HotelCity || !HotelLocation 
-        || !HotelDistance || !TotalRooms || !PricingPerRoom){
+        || !HotelDistance || !TotalRooms || !PricingPerRoom || !BedType){
             return res.status(400).json({
                 message : "Fill All the Fieldss"
            })
@@ -137,7 +136,7 @@ export const ListHotels = async(req,res) => {
             HotelLocation,
             TotalRooms,
             PricingPerRoom,
-            // BedType
+            BedType
         });
         console.log('New Hotel Created -',hotel);
          await hotel.save(); 

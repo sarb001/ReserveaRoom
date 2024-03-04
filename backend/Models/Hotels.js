@@ -7,7 +7,6 @@ const HotelSchema = new mongoose.Schema({
     Hotelname : {
         type:String,
         required : [true,'Please Enter Hotel Name'],
-        unique : true
     },
     HoteltagLine : {
         type:String,
@@ -41,12 +40,11 @@ const HotelSchema = new mongoose.Schema({
         required : [true , "Enter Price Per Room"],
         min: [0, 'Pricing cannot be negative']
     },
-
-    // BedType : {
-    //     type :String,
-    //     required : [true , "Please Enter Bed Type"],
-    //     // enum  : BedTypeoptions
-    // },
+    BedType : {
+        type :String,
+        required : [true , "Please Enter Bed Type"],
+        // enum  : BedTypeoptions
+    },
 })
 
 const Hotel = mongoose.model('Hotel' , HotelSchema);
