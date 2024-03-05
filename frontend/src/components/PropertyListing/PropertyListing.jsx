@@ -20,9 +20,8 @@ const PropertyListing = () => {
   const [HotelDistance,setHotelDistance] = useState(0);
   const [TotalRooms,setTotalRooms] = useState(0);
   const [PricingPerRoom,setPricingPerRoom] = useState(0);
-  
   const [BedType,setBedType] = useState('');
-
+  
    const { loading }  = useSelector(state => state.user);
 
   const handleHotelCreation = async(e) => {
@@ -105,6 +104,12 @@ const PropertyListing = () => {
                     onChange={(e) => setTotalRooms(e.target.value)} required />
                     </div>
 
+                    <div className='my-2 sm:flex sm:justify-between  mt-8'>
+                        <label>  Type of Meals </label>
+                      <input  type = "text"  placeholder = 'Breakfast' 
+                      value={Meals}
+                      onChange={(e) => setMeals(e.target.value)} required />
+                    </div> 
 
                      <div className='my-2 sm:flex sm:justify-between  mt-8'>
                         <label> Pricing of Room Per Night </label>
@@ -113,22 +118,17 @@ const PropertyListing = () => {
                       onChange={(e) => setPricingPerRoom(e.target.value)}
                       required />
                     </div> 
+                   
+                    <div className='my-2 sm:flex sm:justify-between  mt-8'>
+                        <label>  Bed Type </label>
+                      <input  type = "text"  placeholder='King-Size' 
+                      value={BedType}
+                      onChange={(e) => setBedType(e.target.value)} required />
+                    </div> 
 
-                    <div className='my-2 sm:flex sm:justify-between mt-8'>
-                        <label> Types of Bed Available  </label>
-                    <input  type = "text"  placeholder='King-Size...'  
-                     value={BedType}
-                     onChange={(e) => setBedType(e.target.value)} required/>
-                    </div>
+                   
 
-                    <div className='my-2 sm:flex sm:justify-between mt-8'>
-                        <label> Meals  </label>
-                    <input  type = "text"  placeholder='Breakfast'  
-                      value =  {Meals}
-                     onChange={(e) => setMeals(e.target.value)} required/>
-                    </div>
-
-
+              
                     <div className='my-2 sm:flex sm:justify-between mt-8'>
                         <label> No. of Adults  </label>
                     <input  type = "number"  placeholder='30'  

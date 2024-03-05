@@ -91,6 +91,8 @@ export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,Hote
     try {
         dispatch({type:'HotelListingPending'});
 
+        console.log('hote frontend -',Hotelname,HoteltagLine,HotelCity,HotelLocation,HotelDistance,TotalRooms,PricingPerRoom ,Meals ,BedType , PropertyType , Adults );
+
         const {data} = await axios.post('/api/listing' , 
         {Hotelname,HoteltagLine,HotelCity,HotelLocation,
         HotelDistance,TotalRooms ,PricingPerRoom ,BedType  , Meals ,PropertyType , Adults } , 

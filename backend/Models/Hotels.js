@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 
 // const MealOptions = ['Self Catering', 'All meals included' ,'Breakfast & lunch included'];
 
-// const PropertyType = ['Hotels' ,'Apartments' ,'Villas' ,'Entire homes & apartments']
+// const PropertyType = ['Hotels' ,'Apartments' ,'Villas' ,]
 
 const HotelSchema = new mongoose.Schema({
     Hotelname : {
@@ -37,6 +37,11 @@ const HotelSchema = new mongoose.Schema({
         required : [true , " Enter Total Rooms "],
         min: [0, 'TotalRooms cannot be negative'] 
     },
+    Meals: {
+        type:String,
+        required : [true , "Please Enter Meal Type"],
+        // enum : MealOptions
+    },
     PricingPerRoom: {
         type :Number,
         required : [true , "Enter Price Per Room"],
@@ -46,11 +51,6 @@ const HotelSchema = new mongoose.Schema({
         type :String,
         required : [true , "Please Enter Bed Type"],
         // enum  : BedTypeoptions
-    },
-    Meals: {
-        type:String,
-        required : [true , "Please Enter Meal Type"],
-        // enum : MealOptions
     },
 
     PropertyType : {
