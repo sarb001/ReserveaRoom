@@ -26,14 +26,17 @@ export const UserReducer = createReducer(initialState,{
            state.isAuthenticated = false;
         },
         LoginPending :(state) => {
-           state.loading = true;
-           state.isAuthenticated = false;
-           state.error = false;
-         },
-         LoginSuccess : (state,action) => {
-            state.loading = false;
-            state.isAuthenticated = true;
-            state.user = action.payload;
+         console.log(' Login First 5 ');
+         state.loading = true;
+         state.isAuthenticated = false;
+         state.error = false;
+      },
+      LoginSuccess : (state,action) => {
+         state.loading = false;
+         console.log(' Login First 6 ');
+         state.isAuthenticated = true;
+         state.user = action.payload;
+         console.log(' Login First 7 ');
             state.error = false;
          },
          LoginFailed : (state,action) => {
@@ -96,21 +99,22 @@ export const UserReducer = createReducer(initialState,{
 
 export const  HotelReducer = createReducer(initialState ,{
       AllHotelsListPending :(state) => {
+         console.log('dispatched 5 -');
          state.loading = true;
          state.error = false;
          state.isAuthenticated = false;
       },
       AllHotelsListSuccess : (state,action) => {
          state.loading = false;
-         console.log('state alljotes 1-' ,action.payload);
+         console.log('dispatched 6 -');
          state.allhotels = action.payload;
-         console.log('state alljotes  2 -',action.payload);
+         console.log('dispatched 7 -');
          state.isAuthenticated = true;
          state.error = false;
       },
       AllHotelsListFailed : (state,action) => {
          state.loading = false;
-         state.error = action.payload;
          state.isAuthenticated = false;
+         state.error = action.payload;
       },
 })

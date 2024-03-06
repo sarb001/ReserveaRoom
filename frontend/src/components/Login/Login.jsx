@@ -15,9 +15,10 @@ const Login = () => {
     const { loading } = useSelector(state => state.user);
 
     const Loginhandler = async(e) => {
-      console.log('reaching Login');
       e.preventDefault();
-       await dispatch(UserLogin(email,password));
+      console.log(' Login First 1 ');
+      await dispatch(UserLogin(email,password));
+      console.log(' Login First 2 ');
       navigate('/');
     }
 

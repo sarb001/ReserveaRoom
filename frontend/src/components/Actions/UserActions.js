@@ -30,7 +30,7 @@ export const UserRegister = (fname,email,password)  => async(dispatch) => {
 export const UserLogin = (email,password) => async(dispatch) =>  {
     try {
         dispatch({type:'LoginPending'});
-        
+        console.log(' Login First 3 ');
         const {data} = await  axios.post('/api/login' , 
         {email,password},
         {
@@ -39,7 +39,9 @@ export const UserLogin = (email,password) => async(dispatch) =>  {
                 'Content-Type' : 'application/json'
             }
         })
-
+        
+        console.log(' Login First 4 ');
+        console.log('login data -',data);
         dispatch({type: 'LoginSuccess' , payload : data.user});
         return toast.success(' User Logged In ');
         
@@ -113,24 +115,3 @@ export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,Hote
     }
 }
 
-
-export const AllHotels = () => async(dispatch) => {
-    try {
-        
-        dispatch({type:"AllHotelsListPending"});
-        const {data} = await axios.get('/api/allHotels' ,
-        {
-            withCredentials : true,
-            headers : {
-                'Content-Type' : 'application/json'
-            }
-        });
-
-         console.log('all Hotels data -',data);
-         dispatch({type:"AllHotelsListSuccess" , payload : data.allhotels})
-        
-    } catch (error) {
-        console.log('error -',error);
-        dispatch({type:"AllHotelsListFailed" ,payload :  error.response.data.message})
-    }
-}   
