@@ -4,7 +4,8 @@ import { createReducer } from '@reduxjs/toolkit' ;
 const initialState = {
     loading : false,
     error   : false,
-    isAuthenticated : false
+    isAuthenticated : false,
+    allhotels :[]
 }
 
 export const UserReducer = createReducer(initialState,{
@@ -72,21 +73,44 @@ export const UserReducer = createReducer(initialState,{
             state.loading = false;
             state.isAuthenticated = false;
          },
-         HotelListingPending :(state) => {
+         AllHotelsListPending :(state) => {
             state.loading = true;
             state.error = false;
             state.isAuthenticated = false;
           },
-          HotelListingSuccess : (state,action) => {
+          AllHotelsListSuccess : (state,action) => {
              state.loading = false;
              state.hotel = action.payload;
              state.isAuthenticated = true;
              state.error = false;
           },
-          HotelListingFailed : (state,action) => {
+          AllHotelsListFailed : (state,action) => {
             state.error = action.payload;
             state.loading = false;
             state.isAuthenticated = false;
          },
+      
       })
          
+
+
+export const  HotelReducer = createReducer(initialState ,{
+      AllHotelsListPending :(state) => {
+         state.loading = true;
+         state.error = false;
+         state.isAuthenticated = false;
+      },
+      AllHotelsListSuccess : (state,action) => {
+         state.loading = false;
+         console.log('state alljotes 1-' ,action.payload);
+         state.allhotels = action.payload;
+         console.log('state alljotes  2 -',action.payload);
+         state.isAuthenticated = true;
+         state.error = false;
+      },
+      AllHotelsListFailed : (state,action) => {
+         state.loading = false;
+         state.error = action.payload;
+         state.isAuthenticated = false;
+      },
+})

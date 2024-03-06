@@ -152,3 +152,17 @@ export const ListHotels = async(req,res) => {
         console.log('error Hotels -',error);
     }
 }
+
+export const AllHotels = async(req,res) => {
+    try {
+        const allhotels = await Hotel.find({});
+        console.log('allHotels -',allhotels);
+         return res.status(200).json({
+             allhotels,
+             success : true,
+             message : " All Hotels Fetched "
+        })
+    } catch (error) {
+        console.log('error is -',error);
+    }
+}

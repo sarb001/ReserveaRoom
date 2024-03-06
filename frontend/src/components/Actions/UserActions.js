@@ -112,3 +112,25 @@ export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,Hote
         return toast.error(' Try Adding Again ');
     }
 }
+
+
+export const AllHotels = () => async(dispatch) => {
+    try {
+        
+        dispatch({type:"AllHotelsListPending"});
+        const {data} = await axios.get('/api/allHotels' ,
+        {
+            withCredentials : true,
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        });
+
+         console.log('all Hotels data -',data);
+         dispatch({type:"AllHotelsListSuccess" , payload : data.allhotels})
+        
+    } catch (error) {
+        console.log('error -',error);
+        dispatch({type:"AllHotelsListFailed" ,payload :  error.response.data.message})
+    }
+}   
