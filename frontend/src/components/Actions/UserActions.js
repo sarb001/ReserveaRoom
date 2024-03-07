@@ -115,3 +115,24 @@ export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,Hote
     }
 }
 
+export const  GetAllHotels = () => async(dispatch) => {
+    try {
+            dispatch({type:"AllHotelsListPending"});
+
+            const {data} = await axios.get('/api/allhotels' ,{
+                withCredentials :true,
+                headers : {
+                    'Content-Type' : 'application/json',
+                }
+            })
+            
+            console.log('get all data -',data);
+            dispatch({type:"AllHotelsListSuccess" , payload: data.allhotels});
+            return;
+    } catch (error) {
+
+        console.log('error inall -',error);
+        dispatch({type:"AllHotelsListFailed" , payload : error.response.data.message });
+        return;
+    }
+}

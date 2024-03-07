@@ -92,29 +92,47 @@ export const UserReducer = createReducer(initialState,{
             state.loading = false;
             state.isAuthenticated = false;
          },
-      
+         AllHotelsListPending :(state) => {
+            console.log('dispatched 5 -');
+            state.loading = true;
+            state.error = false;
+            state.isAuthenticated = false;
+         },
+         AllHotelsListSuccess : (state,action) => {
+            state.loading = false;
+            console.log('dispatched 6 -');
+            state.allhotels = action.payload;
+            console.log('dispatched 7 -');
+            state.isAuthenticated = true;
+            state.error = false;
+         },
+         AllHotelsListFailed : (state,action) => {
+            state.loading = false;
+            state.isAuthenticated = false;
+            state.error = action.payload;
+         },
       })
          
 
 
-export const  HotelReducer = createReducer(initialState ,{
-      AllHotelsListPending :(state) => {
-         console.log('dispatched 5 -');
-         state.loading = true;
-         state.error = false;
-         state.isAuthenticated = false;
-      },
-      AllHotelsListSuccess : (state,action) => {
-         state.loading = false;
-         console.log('dispatched 6 -');
-         state.allhotels = action.payload;
-         console.log('dispatched 7 -');
-         state.isAuthenticated = true;
-         state.error = false;
-      },
-      AllHotelsListFailed : (state,action) => {
-         state.loading = false;
-         state.isAuthenticated = false;
-         state.error = action.payload;
-      },
-})
+// export const  HotelReducer = createReducer(initialState ,{
+//       AllHotelsListPending :(state) => {
+//          console.log('dispatched 5 -');
+//          state.loading = true;
+//          state.error = false;
+//          state.isAuthenticated = false;
+//       },
+//       AllHotelsListSuccess : (state,action) => {
+//          state.loading = false;
+//          console.log('dispatched 6 -');
+//          state.allhotels = action.payload;
+//          console.log('dispatched 7 -');
+//          state.isAuthenticated = true;
+//          state.error = false;
+//       },
+//       AllHotelsListFailed : (state,action) => {
+//          state.loading = false;
+//          state.isAuthenticated = false;
+//          state.error = action.payload;
+//       },
+// })

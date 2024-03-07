@@ -17,7 +17,7 @@ router.route('/profile').get(VerifyAuthentication ,MyProfile);
 
 router.route('/listing').post(VerifyAuthentication ,ListHotels);
 
-router.route('/allHotels').get(VerifyAuthentication ,AllHotels);
+router.route('/allhotels').get(VerifyAuthentication ,AllHotels);
 
 
 
