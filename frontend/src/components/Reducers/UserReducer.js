@@ -5,7 +5,11 @@ const initialState = {
     loading : false,
     error   : false,
     isAuthenticated : false,
-    allhotels :[]
+    allhotels :[],
+    twin : "",
+    BedType : {
+      double : ""
+    }
 }
 
 export const UserReducer = createReducer(initialState,{
@@ -113,26 +117,22 @@ export const UserReducer = createReducer(initialState,{
          },
       })
          
+export const FilterReducer = createReducer(initialState, {
 
-
-// export const  HotelReducer = createReducer(initialState ,{
-//       AllHotelsListPending :(state) => {
-//          console.log('dispatched 5 -');
-//          state.loading = true;
-//          state.error = false;
-//          state.isAuthenticated = false;
-//       },
-//       AllHotelsListSuccess : (state,action) => {
-//          state.loading = false;
-//          console.log('dispatched 6 -');
-//          state.allhotels = action.payload;
-//          console.log('dispatched 7 -');
-//          state.isAuthenticated = true;
-//          state.error = false;
-//       },
-//       AllHotelsListFailed : (state,action) => {
-//          state.loading = false;
-//          state.isAuthenticated = false;
-//          state.error = action.payload;
-//       },
-// })
+      BedTypeFilterPending :(state) => {
+      state.loading = true;
+      state.error = false;
+      state.isAuthenticated = false;
+    },
+    BedTypeFilterSuccess : (state,action) => {
+       state.loading = false;
+       state.BedType = action.payload;
+       state.isAuthenticated = true;
+       state.error = false;
+    },
+    BedTypeFilterFailed : (state,action) => {
+      state.error = action.payload;
+      state.loading = false;
+      state.error = action.payload;
+    }
+})

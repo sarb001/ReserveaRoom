@@ -136,3 +136,12 @@ export const  GetAllHotels = () => async(dispatch) => {
         return;
     }
 }
+
+export const  ByMainTwinBedType = (twin) => async(dispatch) => {
+    console.log('data type -',twin);
+    try {
+            
+    } catch (error) {   
+        console.log('error -',error);
+    }
+}

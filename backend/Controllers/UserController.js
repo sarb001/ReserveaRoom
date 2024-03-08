@@ -166,3 +166,13 @@ export const AllHotels = async(req,res) => {
         console.log('error is -',error);
     }
 }
+
+export const FilterNow = async(req,res) => {
+    try {
+                // /api/q?bedType=twin
+            console.log('request now =.',req);
+            const FilterData = await Hotel.find();
+    } catch (error) {
+            console.log('error is -',error);
+    }
+}
