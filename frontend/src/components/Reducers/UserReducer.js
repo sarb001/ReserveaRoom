@@ -6,6 +6,7 @@ const initialState = {
     error   : false,
     isAuthenticated : false,
     allhotels :[],
+    FilterData : [],
     DoubleBed  : false, 
     TwinBed  : false
 }
@@ -124,7 +125,7 @@ export const FilterReducer = createReducer(initialState, {
      },
      BedTwinFilterSuccess : (state,action) => {
        state.loading = false;
-       state.twin = action.payload;
+       state.FilterData = action.payload;
        state.isAuthenticated = true;
        state.error = false;
      },

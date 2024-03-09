@@ -6,6 +6,10 @@ const ApplyFilter = () => {
 
         const { DoubleBed ,  TwinBed } = useSelector((state) =>  state.filter);
         
+        const  { FilterData }  = useSelector((state) => state.filter);
+
+        console.log('FilterData -',FilterData);
+        
          const dispatch = useDispatch();
 
         const  handlebox = async (e) => {

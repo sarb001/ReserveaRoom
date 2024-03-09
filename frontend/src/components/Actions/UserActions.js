@@ -151,7 +151,7 @@ export const  BedTypeBox = (querydata) => async(dispatch) => {
                 })
                 
                 console.log('get all data -',data);
-                dispatch({type:"BedTwinFilterSuccess" , payload: data});
+                dispatch({type:"BedTwinFilterSuccess" , payload: data.FilteredData});
                 return;
             } catch (error) {   
                 console.log('error -',error);

@@ -170,22 +170,28 @@ export const AllHotels = async(req,res) => {
 
 export const FilterNow = async(req,res) => {
     try {
-                // /api/q?bedType=twin
                 const {  BedType } = await req.query;
                 console.log('backend bed.',BedType);
 
-                const FilterData = await Hotel.find({});
-                // console.log('filterData -',FilterData);
+                const AllHotel = await Hotel.find({});  //  allHotels 
 
-                const FilterByBed =  FilterData?.reduce((acc,item) => {
+                const BedTypeData =  AllHotel?.reduce((acc,item) => {
                     if(item.BedType.toString().replace(/\s/g,'') === BedType.toString().replace(/\s/g, '')){
                         acc.push(item);
                     }
                     return acc;
-                },[])
+                },[]) 
 
-                console.log('filtered-By-Bed bro -- ',FilterByBed);
-                 res.send('done fitlered ');
+                const FilteredData   = BedTypeData.length > 0  ? BedTypeData : AllHotel ;
+
+                console.log('filtered-By-Bed bro -- ',FilteredData);
+
+                res.status(200).json({
+                     FilteredData,
+                     success : true,
+                     message : " Filter workss "
+                })
+
     } catch (error) {
             console.log('error is -',error);
     }
