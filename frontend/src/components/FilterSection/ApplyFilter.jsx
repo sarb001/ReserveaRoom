@@ -4,18 +4,21 @@ import { BedTypeBox  } from '../Actions/UserActions.js';
 
 const ApplyFilter = () => {
 
-        const { DoubleBed ,  TwinBed } = useSelector((state) =>  state.filter);
-        
-        const  { FilterData }  = useSelector((state) => state.filter);
+        const { DoubleBed ,  TwinBed , FilterData } = useSelector((state) =>  state.filter);
 
         console.log('FilterData -',FilterData);
-        
+
          const dispatch = useDispatch();
 
         const  handlebox = async (e) => {
-                console.log('target value -',e.target.value);
-                const data = e.target.value;
-                 await dispatch(BedTypeBox(data));
+                        console.log('target value checked -',e.target.checked);
+                        console.log('target value CLICK -'  ,e.target.value);
+                        
+                                 // true
+                        const data = e.target.value;
+                        const check = e.target.checked;
+                        await dispatch(BedTypeBox(data,check));       // twinbed 
+                    
         }
 
   return (
@@ -36,7 +39,7 @@ const ApplyFilter = () => {
                                 <div>
                                 <div>
                                         <input  type = "checkbox" 
-                                        value = 'TwinBed'   
+                                        value = 'TwinBed'  
                                         ischecked = {TwinBed}
                                         onChange={(e) => handlebox(e)}
                                         />
@@ -45,7 +48,7 @@ const ApplyFilter = () => {
 
                                   <div>
                                     <input  type = "checkbox"
-                                    value = 'DoubleBed'   
+                                    value = 'DoubleBed' 
                                     ischecked = {DoubleBed}
                                     onChange={(e) => handlebox(e)}
                                     />
@@ -92,8 +95,3 @@ const ApplyFilter = () => {
 }
 
 export default ApplyFilter
-
-     // const BedPreferRence = [
-        //         { label : 'Twin Bed'   , ischecked : twin ,   title : 'TwinBed' },
-        //         { label : 'Double Bed' , ischecked : double , title : 'DoubleBed' }
-        // ]

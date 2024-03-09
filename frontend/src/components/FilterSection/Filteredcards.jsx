@@ -14,12 +14,16 @@ const Filteredcards = () => {
     console.log('all hotels -',allhotels);
     console.log('all loading -',loading);
       
-        useEffect(() => {
-          if(!allhotels?.length){
-            console.log('workingss effect');
-            dispatch(GetAllHotels());
-          }
-        },[])
+
+    const { FilterData } = useSelector((state) =>  state.filter);
+    console.log('filtercards -',FilterData);
+
+        // useEffect(() => {
+        //   if(!allhotels?.length){
+        //     console.log('workingss effect');
+        //     dispatch(GetAllHotels());
+        //   }
+        // },[])
 
 
   return (
@@ -27,7 +31,7 @@ const Filteredcards = () => {
       <div className='flex flex-row justify-center flex-wrap gap-5 my-12'>
         
           <div className='allhotels flex flex-wrap'>
-            {allhotels && allhotels?.map((data) => {
+            {FilterData && FilterData?.map((data) => {
               return (
                 <div key = {data._id} className='bg-lime-400 p-2 m-2'>
                     <h1> Hotelname = {data.Hotelname} </h1>

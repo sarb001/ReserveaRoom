@@ -137,13 +137,14 @@ export const  GetAllHotels = () => async(dispatch) => {
     }
 }
 
-export const  BedTypeBox = (querydata) => async(dispatch) => {
+export const  BedTypeBox = (querydata,ischeck) => async(dispatch) => {
     console.log(' Dispatched Action  -',querydata);   
+    console.log(' Dispatched ischeck  -',ischeck);   
     try {
                 // /api/hotels?BedType='twin'
                 dispatch({type:"BedTwinFilterPending"});
                 
-                const {data} = await axios.get(`/api/hotels?BedType=${querydata}` ,{
+                const {data} = await axios.get(`/api/hotels?BedType=${querydata}&check=${ischeck}` ,{
                     withCredentials :true,
                     headers : {
                         'Content-Type' : 'application/json',
@@ -151,7 +152,7 @@ export const  BedTypeBox = (querydata) => async(dispatch) => {
                 })
                 
                 console.log('get all data -',data);
-                dispatch({type:"BedTwinFilterSuccess" , payload: data.FilteredData});
+                dispatch({type:"BedTwinFilterSuccess" , payload: data.FilteredMainData});
                 return;
             } catch (error) {   
                 console.log('error -',error);

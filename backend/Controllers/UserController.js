@@ -156,7 +156,6 @@ export const ListHotels = async(req,res) => {
 export const AllHotels = async(req,res) => {
     try {
         const allhotels = await Hotel.find({});
-        // const removespace =
         console.log('allHotels -',allhotels);
          return res.status(200).json({
              allhotels,
@@ -170,24 +169,31 @@ export const AllHotels = async(req,res) => {
 
 export const FilterNow = async(req,res) => {
     try {
-                const {  BedType } = await req.query;
+                const {  BedType  ,check } = await req.query;
                 console.log('backend bed.',BedType);
+                console.log('backend check.',check);
 
                 const AllHotel = await Hotel.find({});  //  allHotels 
 
-                const BedTypeData =  AllHotel?.reduce((acc,item) => {
-                    if(item.BedType.toString().replace(/\s/g,'') === BedType.toString().replace(/\s/g, '')){
-                        acc.push(item);
-                    }
-                    return acc;
-                },[]) 
+                let FilteredMainData;
 
-                const FilteredData   = BedTypeData.length > 0  ? BedTypeData : AllHotel ;
-
-                console.log('filtered-By-Bed bro -- ',FilteredData);
-
+                if(check === 'true'){
+                    const FilteredData =  AllHotel?.reduce((acc,item) => {
+                        if(item.BedType.toString().replace(/\s/g,'') === BedType.toString().replace(/\s/g, '')){
+                            acc.push(item);
+                        }
+                        return acc;
+                    },[]) 
+                    console.log('true Data -',FilteredData.length);
+                    FilteredMainData = FilteredData;
+                    
+                }else{
+                     FilteredMainData = AllHotel;
+                    console.log('false Data -',FilteredMainData.length);
+                }
+                
                 res.status(200).json({
-                     FilteredData,
+                     FilteredMainData,
                      success : true,
                      message : " Filter workss "
                 })
