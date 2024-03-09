@@ -137,11 +137,24 @@ export const  GetAllHotels = () => async(dispatch) => {
     }
 }
 
-export const  ByMainTwinBedType = (twin) => async(dispatch) => {
-    console.log('data type -',twin);
+export const  BedTypeBox = (querydata) => async(dispatch) => {
+    console.log(' Dispatched Action  -',querydata);   
     try {
-            
-    } catch (error) {   
-        console.log('error -',error);
+                // /api/hotels?BedType='twin'
+                dispatch({type:"BedTwinFilterPending"});
+                
+                const {data} = await axios.get(`/api/hotels?BedType=${querydata}` ,{
+                    withCredentials :true,
+                    headers : {
+                        'Content-Type' : 'application/json',
+                    }
+                })
+                
+                console.log('get all data -',data);
+                dispatch({type:"BedTwinFilterSuccess" , payload: data});
+                return;
+            } catch (error) {   
+                console.log('error -',error);
+                dispatch({type:"BedTwinFilterFailed" , payload :  error.response.data.message});
     }
 }

@@ -1,5 +1,5 @@
 import express from 'express';
-import { AccessUser, AllHotels, ListHotels, LoginUser, Logout, MyProfile, RegisterUser } from '../Controllers/UserController.js';
+import { AccessUser, AllHotels, FilterNow, ListHotels, LoginUser, Logout, MyProfile, RegisterUser } from '../Controllers/UserController.js';
 import  VerifyAuthentication  from '../Authenticaiton/Auth.js';
 
 const router = express.Router();
@@ -18,6 +18,8 @@ router.route('/profile').get(VerifyAuthentication ,MyProfile);
 router.route('/listing').post(VerifyAuthentication ,ListHotels);
 
 router.route('/allhotels').get(VerifyAuthentication ,AllHotels);
+
+router.route('/hotels').get(VerifyAuthentication ,FilterNow);
 
 
 

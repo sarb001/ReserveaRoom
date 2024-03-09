@@ -6,10 +6,8 @@ const initialState = {
     error   : false,
     isAuthenticated : false,
     allhotels :[],
-    twin : "",
-    BedType : {
-      double : ""
-    }
+    DoubleBed  : false, 
+    TwinBed  : false
 }
 
 export const UserReducer = createReducer(initialState,{
@@ -119,18 +117,18 @@ export const UserReducer = createReducer(initialState,{
          
 export const FilterReducer = createReducer(initialState, {
 
-      BedTypeFilterPending :(state) => {
+      BedTwinFilterPending :(state) => {
       state.loading = true;
       state.error = false;
       state.isAuthenticated = false;
-    },
-    BedTypeFilterSuccess : (state,action) => {
+     },
+     BedTwinFilterSuccess : (state,action) => {
        state.loading = false;
-       state.BedType = action.payload;
+       state.twin = action.payload;
        state.isAuthenticated = true;
        state.error = false;
-    },
-    BedTypeFilterFailed : (state,action) => {
+     },
+     BedTwinFilterFailed : (state,action) => {
       state.error = action.payload;
       state.loading = false;
       state.error = action.payload;

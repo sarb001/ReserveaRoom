@@ -156,6 +156,7 @@ export const ListHotels = async(req,res) => {
 export const AllHotels = async(req,res) => {
     try {
         const allhotels = await Hotel.find({});
+        // const removespace =
         console.log('allHotels -',allhotels);
          return res.status(200).json({
              allhotels,
@@ -170,8 +171,21 @@ export const AllHotels = async(req,res) => {
 export const FilterNow = async(req,res) => {
     try {
                 // /api/q?bedType=twin
-            console.log('request now =.',req);
-            const FilterData = await Hotel.find();
+                const {  BedType } = await req.query;
+                console.log('backend bed.',BedType);
+
+                const FilterData = await Hotel.find({});
+                // console.log('filterData -',FilterData);
+
+                const FilterByBed =  FilterData?.reduce((acc,item) => {
+                    if(item.BedType.toString().replace(/\s/g,'') === BedType.toString().replace(/\s/g, '')){
+                        acc.push(item);
+                    }
+                    return acc;
+                },[])
+
+                console.log('filtered-By-Bed bro -- ',FilterByBed);
+                 res.send('done fitlered ');
     } catch (error) {
             console.log('error is -',error);
     }

@@ -1,48 +1,18 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { ByMainTwinBedType } from '../Actions/UserActions.js';
+import { BedTypeBox  } from '../Actions/UserActions.js';
 
 const ApplyFilter = () => {
 
-        const {double } = useSelector((state) =>  state.filter.BedType);
-        const { twin  } = useSelector((state) =>  state.filter);
+        const { DoubleBed ,  TwinBed } = useSelector((state) =>  state.filter);
         
-        console.log('twin 1-',twin);  console.log('double 2-',double);
+         const dispatch = useDispatch();
 
-        
-
-
-
-
-
-
-
-
-
-
-        // const [maintwin,setmaintwin] = useState(twin);
-        // const [maindouble,setmaindouble] = useState(double);
-
-        //  const [Twinvar,setTwinvar] = useState(twin);
-
-        // const dispatch = useDispatch();
-
-        // const handleTwinPreference = () => {
-        //         if(maintwin === 'false' || 'true'){             
-        //                 setmaintwin(!maintwin);     
-        //                 dispatch(ByMainTwinBedType(Twinvar))
-        //                 //dispatch twinbedtype   
-        //         }
-        // }
-        // const handleDoublePreference = () => {
-        //         if(maindouble === 'false' || 'true'){
-        //                 setmaindouble(!maindouble);
-        //                 //dispatch doubleBedtype           
-        //         }
-        // }
-
-        // console.log('twin11-',maintwin);
-        // console.log('double 22-',maindouble); 
+        const  handlebox = async (e) => {
+                console.log('target value -',e.target.value);
+                const data = e.target.value;
+                 await dispatch(BedTypeBox(data));
+        }
 
   return (
     <div>
@@ -60,24 +30,26 @@ const ApplyFilter = () => {
                      <div  className='my-4'>
                                 <span className='text-2xl'>  Bed Preference </span>
                                 <div>
-                         <div>
-                                    <input  type = "checkbox" 
-                                     value={maintwin}   
-                                    ischecked = {twin}
-                                    onChange={() => handleTwinPreference()}
+                                <div>
+                                        <input  type = "checkbox" 
+                                        value = 'TwinBed'   
+                                        ischecked = {TwinBed}
+                                        onChange={(e) => handlebox(e)}
+                                        />
+                                        <label> Twin Bed </label>
+                                </div>
+
+                                  <div>
+                                    <input  type = "checkbox"
+                                    value = 'DoubleBed'   
+                                    ischecked = {DoubleBed}
+                                    onChange={(e) => handlebox(e)}
                                     />
-                                    <label> Twin Bed </label>
-                         </div>
+                                    <label> Double Bed </label>
+                                  </div>
 
                                 </div>
                    </div>
-                                  {/* <div>
-                                    <input  
-                                    type = "checkbox"  value={maindouble}   ischecked = {double.toString()}
-                                    onChange={() => handleDoublePreference()}
-                                    />
-                                    <label> Double Bed </label>
-                                  </div> */}
 
                     <div  className='my-4'>
                             <span className='text-2xl'> Meals </span>
