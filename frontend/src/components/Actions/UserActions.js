@@ -138,8 +138,8 @@ export const  GetAllHotels = () => async(dispatch) => {
 }
 
 export const  BedTypeBox = (querydata,ischeck) => async(dispatch) => {
-    console.log(' Dispatched Action  -',querydata);   
-    console.log(' Dispatched ischeck  -',ischeck);   
+    // console.log(' Dispatched Action  -',querydata);   
+    // console.log(' Dispatched ischeck  -',ischeck);   
     try {
                 // /api/hotels?BedType='twin'
                 dispatch({type:"BedTwinFilterPending"});
@@ -151,11 +151,31 @@ export const  BedTypeBox = (querydata,ischeck) => async(dispatch) => {
                     }
                 })
                 
-                console.log('get all data -',data);
+                // console.log('get all data -',data);
                 dispatch({type:"BedTwinFilterSuccess" , payload: data.FilteredMainData});
                 return;
             } catch (error) {   
                 console.log('error -',error);
                 dispatch({type:"BedTwinFilterFailed" , payload :  error.response.data.message});
+    }
+}
+
+export const Sorting = (sortingtype) => async(dispatch) => {
+    try {
+        console.log('sorttype actions -',sortingtype);
+        dispatch({type:"SortingTypeFilterPending"});
+
+        const { data } = await  axios.get(`/api/hotel?sort=${sortingtype}` ,{
+            withCredentials :true,
+            headers : {
+                'Content-Type' : 'application/json',
+            }
+        });
+
+        console.log('data sorting -',data);
+        dispatch({type:"SortingTypeFilterSuccess" , payload: data.filtersort });
+    } catch (error) {
+        dispatch({type:"SortingTypeFilterFailed" , error :error.response.data.message });
+        console.log('error -',error);
     }
 }

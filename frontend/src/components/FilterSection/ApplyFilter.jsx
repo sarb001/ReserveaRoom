@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BedTypeBox  } from '../Actions/UserActions.js';
+import { BedTypeBox, Sorting  } from '../Actions/UserActions.js';
 
 const ApplyFilter = () => {
 
         const { DoubleBed ,  TwinBed , FilterData } = useSelector((state) =>  state.filter);
 
-        console.log('FilterData -',FilterData);
+        // console.log('FilterData -',FilterData);
 
          const dispatch = useDispatch();
 
@@ -21,18 +21,27 @@ const ApplyFilter = () => {
                     
         }
 
+        const checkoption = async(e) => {
+                console.log('target dropdown -',e.target.value);
+                const sortvalue = e.target.value;
+                console.log('sort value -',sortvalue);
+                await dispatch(Sorting(sortvalue));
+        }
+
+
   return (
     <div>
                 <div>
                     <span className='text-3xl'> Filter By: </span>
                 </div>
-{/* 
+
                     <div className='my-4'>
-                            <select>
-                              <option value='top-pics'> Price : low to highest </option>
-                              <option value='discounts'> Distance from Center </option>
+                            <select onClick={(e) => checkoption(e)}>
+                              <option value='asc'> Price : low to highest </option>
+                              <option value='desc'> Price : High to lowest </option>
+                              <option value='distance'> Distance from Center </option>
                             </select>
-                    </div>  */}
+                    </div> 
 
                      <div  className='my-4'>
                                 <span className='text-2xl'>  Bed Preference </span>
@@ -40,7 +49,7 @@ const ApplyFilter = () => {
                                 <div>
                                         <input  type = "checkbox" 
                                         value = 'TwinBed'  
-                                        ischecked = {TwinBed}
+                                        ischecked = {TwinBed.toString()}
                                         onChange={(e) => handlebox(e)}
                                         />
                                         <label> Twin Bed </label>
@@ -49,7 +58,7 @@ const ApplyFilter = () => {
                                   <div>
                                     <input  type = "checkbox"
                                     value = 'DoubleBed' 
-                                    ischecked = {DoubleBed}
+                                    ischecked = {DoubleBed.toString()}
                                     onChange={(e) => handlebox(e)}
                                     />
                                     <label> Double Bed </label>

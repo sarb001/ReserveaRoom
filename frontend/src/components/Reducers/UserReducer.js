@@ -7,8 +7,11 @@ const initialState = {
     isAuthenticated : false,
     allhotels :[],
     FilterData : [],
+    FilterbySorting : [],
     DoubleBed  : false, 
-    TwinBed  : false
+    TwinBed  : false,
+    asc : false,
+    desc : false, 
 }
 
 export const UserReducer = createReducer(initialState,{
@@ -130,6 +133,22 @@ export const FilterReducer = createReducer(initialState, {
        state.error = false;
      },
      BedTwinFilterFailed : (state,action) => {
+      state.error = action.payload;
+      state.loading = false;
+      state.error = action.payload;
+    },
+     SortingTypeFilterPending :(state) => {
+      state.loading = true;
+      state.error = false;
+      state.isAuthenticated = false;
+     },
+     SortingTypeFilterSuccess : (state,action) => {
+       state.loading = false;
+       state.FilterbySorting = action.payload;
+       state.isAuthenticated = true;
+       state.error = false;
+     },
+     SortingTypeFilterFailed : (state,action) => {
       state.error = action.payload;
       state.loading = false;
       state.error = action.payload;

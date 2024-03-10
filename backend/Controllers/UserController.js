@@ -202,3 +202,36 @@ export const FilterNow = async(req,res) => {
             console.log('error is -',error);
     }
 }
+
+export const SortingNow = async(req,res) => {
+    try {
+        const {sort} = await  req.query;
+        console.log('requested  query -',sort);
+
+        const AllHotel = await Hotel?.find({});    
+        console.log('allHotels sorting -',AllHotel.length);
+
+        let filtersort;
+
+        if(sort.toString() === 'asc'){
+          filtersort = AllHotel?.sort((obj1,obj2) => 
+                             obj1.PricingPerRoom - obj2.PricingPerRoom
+                        )
+          }else if(sort.toString() === 'desc'){
+            filtersort = AllHotel?.sort((obj1,obj2) => 
+                obj2.PricingPerRoom - obj1.PricingPerRoom
+                )
+          }
+
+        console.log(' sorting All -',filtersort);
+        // console.log(' sorting elngth -',filtersort.length);
+
+        res.status(200).json({
+             filtersort,
+             message:" Sorting done "
+        })
+
+    } catch (error) {
+            console.log('error in sorting -',error);
+    }
+}
