@@ -8,6 +8,7 @@ const initialState = {
     allhotels :[],
     FilterData : [],
     FilterbySorting : [],
+    DistanceFilter : [],
     DoubleBed  : false, 
     TwinBed  : false,
     asc : false,
@@ -152,5 +153,5 @@ export const FilterReducer = createReducer(initialState, {
       state.error = action.payload;
       state.loading = false;
       state.error = action.payload;
-    }
+    },
 })

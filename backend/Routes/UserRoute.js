@@ -25,4 +25,7 @@ router.route('/hotel').get(VerifyAuthentication ,SortingNow);
 
 
 
+
+
+
 export default router;

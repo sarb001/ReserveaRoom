@@ -221,9 +221,13 @@ export const SortingNow = async(req,res) => {
             filtersort = AllHotel?.sort((obj1,obj2) => 
                 obj2.PricingPerRoom - obj1.PricingPerRoom
                 )
+          }else if(sort.toString() === 'distance'){
+            filtersort = AllHotel?.sort((obj1,obj2) => 
+                 obj1.HotelDistance - obj2.HotelDistance
+            )
           }
 
-        console.log(' sorting All -',filtersort);
+        // console.log(' sorting All -',filtersort);
         // console.log(' sorting elngth -',filtersort.length);
 
         res.status(200).json({
