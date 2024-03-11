@@ -22,10 +22,9 @@ const ApplyFilter = () => {
 
         const  handlebox = async (e) => {
                 e.preventDefault();
-                        console.log('target value checked -',e.target.checked);
-                        console.log('target value CLICK -'  ,e.target.value);
-                        
-                                 // true
+                        // console.log('target value checked -',e.target.checked);
+                        // console.log('target value CLICK -'  ,e.target.value);
+                
                         const data = e.target.value;
                         const check = e.target.checked;
                         await dispatch(BedTypeBox(data,check));       // twinbed 
