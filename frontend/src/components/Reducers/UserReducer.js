@@ -83,6 +83,7 @@ export const UserReducer = createReducer(initialState,{
             state.loading = false;
             state.isAuthenticated = false;
          },
+
          AllHotelsListPending :(state) => {
             state.loading = true;
             state.error = false;
@@ -99,6 +100,7 @@ export const UserReducer = createReducer(initialState,{
             state.loading = false;
             state.isAuthenticated = false;
          },
+
          AllHotelsListPending :(state) => {
             console.log('dispatched 5 -');
             state.loading = true;
@@ -109,6 +111,7 @@ export const UserReducer = createReducer(initialState,{
             state.loading = false;
             console.log('dispatched 6 -');
             state.allhotels = action.payload;
+            state.FilterData = action.payload;
             console.log('dispatched 7 -');
             state.isAuthenticated = true;
             state.error = false;
@@ -118,40 +121,37 @@ export const UserReducer = createReducer(initialState,{
             state.isAuthenticated = false;
             state.error = action.payload;
          },
+         BedTwinFilterPending :(state) => {
+            state.loading = true;
+            state.error = false;
+            state.isAuthenticated = false;
+           },
+           BedTwinFilterSuccess : (state,action) => {
+             state.loading = false;
+             state.FilterData = action.payload;
+             state.isAuthenticated = true;
+             state.error = false;
+           },
+           BedTwinFilterFailed : (state,action) => {
+            state.error = action.payload;
+            state.loading = false;
+            state.error = action.payload;
+          },
+           SortingTypeFilterPending :(state) => {
+            state.loading = true;
+            state.error = false;
+            state.isAuthenticated = false;
+           },
+           SortingTypeFilterSuccess : (state,action) => {
+             state.loading = false;
+             state.FilterbySorting = action.payload;
+             state.isAuthenticated = true;
+             state.error = false;
+           },
+           SortingTypeFilterFailed : (state,action) => {
+            state.error = action.payload;
+            state.loading = false;
+            state.error = action.payload;
+          },
       })
          
-export const FilterReducer = createReducer(initialState, {
-
-      BedTwinFilterPending :(state) => {
-      state.loading = true;
-      state.error = false;
-      state.isAuthenticated = false;
-     },
-     BedTwinFilterSuccess : (state,action) => {
-       state.loading = false;
-       state.FilterData = action.payload;
-       state.isAuthenticated = true;
-       state.error = false;
-     },
-     BedTwinFilterFailed : (state,action) => {
-      state.error = action.payload;
-      state.loading = false;
-      state.error = action.payload;
-    },
-     SortingTypeFilterPending :(state) => {
-      state.loading = true;
-      state.error = false;
-      state.isAuthenticated = false;
-     },
-     SortingTypeFilterSuccess : (state,action) => {
-       state.loading = false;
-       state.FilterbySorting = action.payload;
-       state.isAuthenticated = true;
-       state.error = false;
-     },
-     SortingTypeFilterFailed : (state,action) => {
-      state.error = action.payload;
-      state.loading = false;
-      state.error = action.payload;
-    },
-})

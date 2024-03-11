@@ -1,16 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { BedTypeBox, Sorting  } from '../Actions/UserActions.js';
+import { BedTypeBox, GetAllHotels, Sorting  } from '../Actions/UserActions.js';
+import Filteredcards from './Filteredcards.jsx';
 
 const ApplyFilter = () => {
+        
+        const { allhotels  , loading ,FilterData , DoubleBed ,  TwinBed  } = useSelector((state) => state?.user);
+        console.log('filtercards -',FilterData);
+        console.log('all hotels -',allhotels);
 
-        const { DoubleBed ,  TwinBed , FilterData } = useSelector((state) =>  state.filter);
+        const dispatch = useDispatch();
 
-        // console.log('FilterData -',FilterData);
+        useEffect(() => {
+                if (!allhotels?.length) {
+                        dispatch(GetAllHotels());
+                }
+        },[allhotels,dispatch])
 
-         const dispatch = useDispatch();
 
         const  handlebox = async (e) => {
+                e.preventDefault();
                         console.log('target value checked -',e.target.checked);
                         console.log('target value CLICK -'  ,e.target.value);
                         
@@ -22,6 +31,7 @@ const ApplyFilter = () => {
         }
 
         const checkoption = async(e) => {
+                e.preventDefault();
                 console.log('target dropdown -',e.target.value);
                 const sortvalue = e.target.value;
                 console.log('sort value -',sortvalue);
@@ -65,9 +75,33 @@ const ApplyFilter = () => {
                                   </div>
 
                                 </div>
-                   </div>
+                    </div>
+                
+                  <div>
+                  <div className='allhotels flex flex-wrap'>
+                        {FilterData && FilterData?.map((data) => {
+                return (
+                        <div key = {data._id} className='bg-lime-400 p-2 m-2'>
+                        <h1> Hotelname = {data.Hotelname} </h1>
+                        <h1> HotelTagLine = {data.HoteltagLine} </h1>
+                        <h1> HotelCity = {data.HotelCity} </h1>
+                        <h1> HotelLocation = {data.HotelLocation} </h1>
+                        <h1> HotelDistance = {data.HotelDistance} </h1>
+                        <h1> TotalRooms ={data.TotalRooms} </h1>
+                        <h1> PricingPerRoom = {data.PricingPerRoom} </h1>
+                        <h1> PropertyType = {data.PropertyType} </h1>
+                        <h1> Adults = {data.Adults} </h1>
+                        <h1> Meals = {data.Meals} </h1>
+                        <h1> BedType = {data.BedType} </h1>
+                        </div>
+                        )
+                        })}
+                </div>
+                 </div>
+                    
 
-                    <div  className='my-4'>
+
+                    {/* <div  className='my-4'>
                             <span className='text-2xl'> Meals </span>
                                 <div>
                                         <input  type = "checkbox"  />
@@ -81,9 +115,9 @@ const ApplyFilter = () => {
                                         <input  type = "checkbox"  />
                                         <label>   All meals included </label>
                                 </div>
-                    </div>
+                    </div> */}
 
-                    <div  className='my-4'>
+                    {/* <div  className='my-4'>
                             <span className='text-2xl'> Property Type  </span>
                                 <div>
                                         <input  type = "checkbox"  />
@@ -98,7 +132,7 @@ const ApplyFilter = () => {
                                         <input  type = "checkbox"  />
                                         <label> Villas </label>
                                 </div>
-                    </div>
+                    </div> */}
     </div>
   )
 }

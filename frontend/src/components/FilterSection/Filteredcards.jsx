@@ -7,16 +7,32 @@ import { GetAllHotels } from '../Actions/UserActions';
 
 const Filteredcards = () => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-
-    const { allhotels ,loading } = useSelector((state) => state?.user);
-    console.log('all hotels -',allhotels);
-    console.log('all loading -',loading);
+  //   const { allhotels ,loading } = useSelector((state) => state?.user);
+  //   console.log('all hotels -',allhotels);
+  //   console.log('all loading -',loading);
       
 
-    const { FilterData } = useSelector((state) =>  state.filter);
-    console.log('filtercards -',FilterData);
+  //   const { FilterData } = useSelector((state) =>  state.filter);
+  //   console.log('filtercards -',FilterData);
+
+  //   const [displayHotel,setdisplayHotel] = useState(allhotels);
+
+  //  useEffect(() => {
+  //   if(!allhotels?.length){
+  //         dispatch(GetAllHotels());
+  //         setdisplayHotel(allhotels);
+  //   }
+  //  },[allhotels,dispatch])
+
+
+  //  useEffect(() => {
+  //    if(FilterData){
+  //      setdisplayHotel(FilterData);
+  //    }
+  //  },[allhotels,FilterData])
+
 
         // useEffect(() => {
         //   if(!allhotels?.length){
@@ -26,12 +42,15 @@ const Filteredcards = () => {
         // },[])
 
 
+        // const result = allhotels && allhotels?.filter((item) => item)
+
+
   return (
     <div>
       <div className='flex flex-row justify-center flex-wrap gap-5 my-12'>
         
           <div className='allhotels flex flex-wrap'>
-            {FilterData && FilterData?.map((data) => {
+            {/* {displayHotel && displayHotel?.map((data) => {
               return (
                 <div key = {data._id} className='bg-lime-400 p-2 m-2'>
                     <h1> Hotelname = {data.Hotelname} </h1>
@@ -47,7 +66,7 @@ const Filteredcards = () => {
                     <h1> BedType = {data.BedType} </h1>
                    </div>
                  )
-                })}
+                })} */}
          </div>
 
       </div>

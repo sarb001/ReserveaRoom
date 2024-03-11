@@ -227,9 +227,6 @@ export const SortingNow = async(req,res) => {
             )
           }
 
-        // console.log(' sorting All -',filtersort);
-        // console.log(' sorting elngth -',filtersort.length);
-
         res.status(200).json({
              filtersort,
              message:" Sorting done "
