@@ -5,9 +5,11 @@ import Filteredcards from './Filteredcards.jsx';
 
 const ApplyFilter = () => {
         
-        const { allhotels  , loading ,FilterData , DoubleBed ,  TwinBed  } = useSelector((state) => state?.user);
+        const { allhotels ,FilterData , loading }  = useSelector((state) => state?.Hotel);
+
+        const { DoubleBed ,TwinBed  }  = useSelector((state) => state?.Filter);
+
         console.log('filtercards -',FilterData);
-        console.log('all hotels -',allhotels);
 
         const dispatch = useDispatch();
 

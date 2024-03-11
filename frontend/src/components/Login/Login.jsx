@@ -12,7 +12,7 @@ const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { loading } = useSelector(state => state.user);
+    const { loading } = useSelector(state => state?.user);
 
     const Loginhandler = async(e) => {
       e.preventDefault();

@@ -15,7 +15,7 @@ import { loaduser } from './components/Actions/UserActions';
 
 function App() {
 
-  const {isAuthenticated} = useSelector(state => state?.user);
+  const {isAuthenticated} = useSelector(state => state?.auth);
   console.log('isAuth profile -',isAuthenticated);
   const dispatch = useDispatch();
   

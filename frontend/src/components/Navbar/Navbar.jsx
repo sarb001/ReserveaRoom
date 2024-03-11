@@ -17,7 +17,8 @@ const Navbar = () => {
    const shownavlinks = () => { setshowbar(!showbar)}
    const changemode   = () => { setdarkmode(!darkmode)}
 
-   const { loading , user , isAuthenticated  } = useSelector(state => state.user);
+
+   const { loading , isAuthenticated , user  } = useSelector(state => state?.auth);
   
    console.log('user profilee  -',user);
    console.log('isAuthh 1 -',isAuthenticated);
@@ -82,7 +83,7 @@ const Navbar = () => {
 
                     <li  className='py-2'> 
                       <button className='bg-slate-100 text-blue-600 p-1' > 
-                        { loading === true ? "<h1> Loading... </h1>" :  <> {user.fname} </>}  
+                        { loading === true ? "<h1> Loading... </h1>" :  <> {user?.fname} </>}  
                       </button>
                     </li>
                       </>

@@ -91,7 +91,7 @@ export const loaduser = () => async(dispatch) => {
 
 export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,HotelDistance,TotalRooms,PricingPerRoom ,BedType ,Meals ,PropertyType , Adults ) => async(dispatch) => {
     try {
-        dispatch({type:'HotelListingPending'});
+        dispatch({type:'AllHotelsListPending'});
 
         console.log('hote frontend -',Hotelname,HoteltagLine,HotelCity,HotelLocation,HotelDistance,TotalRooms,PricingPerRoom ,Meals ,BedType , PropertyType , Adults );
 
@@ -105,12 +105,12 @@ export const HotelListing = (Hotelname,HoteltagLine,HotelCity,HotelLocation,Hote
             }
         })
         console.log('Hotel data -',{data});
-        dispatch({type:'HotelListingSuccess', payload : data.hotel});
+        dispatch({type:'AllHotelsListSuccess', payload : data.hotel});
         return  toast.success('Added to  the List');
 
     } catch (error) {
         console.log('error lsting -',error);
-        dispatch({type:'HotelListingFailed', payload : error.response.data.message });
+        dispatch({type:'AllHotelsListFailed', payload : error.response.data.message });
         return toast.error(' Try Adding Again ');
     }
 }
